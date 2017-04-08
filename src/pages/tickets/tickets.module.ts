@@ -10,7 +10,7 @@ import { Tickets } from './tickets';
   //   IonicModule.forChild(Tickets),
   // ],
   exports: [
-    Tickets
+    Tickets,
   ]
 })
 export class TicketsModule {}

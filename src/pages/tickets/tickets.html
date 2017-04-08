@@ -17,30 +17,12 @@
     <ion-grid>
         <ion-row *ngFor="let date of dates">
             <ion-col col-2>
-                <div class="date dates">{{date.day}}</div>
-                <div class="month dates">{{date.month}}</div>
+                <div class="date dates">{{getDate(date.date)}}</div>
+                <div class="month dates">{{getMonth(date.date)}}</div>
             </ion-col>
             <ion-col>
-                <ion-row>
-                    <ion-card class="ticket-card">
-                        <ion-card-content>
-                            <div class="card-element">
-                                <ion-icon ios="ios-pin" md="md-pin" class="card-icon"></ion-icon>
-                                <span>Rr. e Barrikadave, Tirane</span>
-                            </div>
-                            <div class="card-element">
-                                <ion-icon ios="ios-time-outline" md="md-time" class="card-icon"></ion-icon>
-                                <span>14:30</span>
-                            </div>
-                        </ion-card-content>
-                        <div class="card-footer" padding>
-                            <div class="card-element no-margin">
-                                <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" class="card-icon"></ion-icon>
-                                <span>Aprovuar</span>
-                            </div>
-                        </div>
-                    </ion-card>
-                </ion-row>
+                <ticket *ngFor="let ticket of date.tickets" [ticketitem]="ticket">
+                </ticket>
             </ion-col>
             <ion-col col-12>
                 <hr>
@@ -49,7 +31,7 @@
         
     </ion-grid>
 
-    <ion-fab right bottom>
+    <ion-fab right bottom style="bottom: 25px; right: 25px;">
         <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 

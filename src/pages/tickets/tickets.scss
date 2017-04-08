@@ -13,12 +13,15 @@ page-tickets {
         text-align: center;
     }
     .month {
-        font-size: 1rem;
+        font-size: .85rem;
         text-align: center
     }
 
     .ticket-card {
         background-color: white;
+        margin: 10px 0;
+        padding: 0;
+        width: 100%;
 
         .card-element{
             margin-bottom: 10px;
@@ -27,10 +30,15 @@ page-tickets {
             .card-icon{
                 margin-right: 10px;
             }
+
+            .element-text {
+                padding-left: 10px;
+            }
         }
 
         .card-footer {
-            background-color: color($colors, secondary);
+            // background-color: color($colors, secondary);
+            padding: 10px 16px;
             
             .card-element {
                 color: white;
@@ -41,6 +49,11 @@ page-tickets {
     .no-margin {
         margin: 0 !important;
     }
+
+   ion-fab {
+       right: 20px;
+       bottom: 20px;
+   }
     
     
 }

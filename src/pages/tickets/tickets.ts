@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+
+
 /**
  * Generated class for the Tickets page.
  *
@@ -25,25 +27,29 @@ export class Tickets {
                 id: 0,
                 date: '2017-02-14',
                 time: '12:00',
-                location: 'Rr e Barrikadave, Tirane'
+                location: 'Rr e Barrikadave, Tirane',
+                status: 'Aprovuar'
             },
             {
                 id: 1,
                 date: '2017-02-14',
                 time: '14:30',
-                location: 'Rr e Barrikadave, Tirane'
+                location: 'Rr e Barrikadave, Tirane',
+                status: 'Ne pritje per aprovim'
             },
             {
                 id: 0,
                 date: '2017-03-08',
                 time: '14:00',
-                location: 'Rr e Barrikadave, Tirane'
+                location: 'Rr e Barrikadave, Tirane',
+                status: 'Ne pritje per anullim'
             },
             {
                 id: 0,
                 date: '2017-04-12',
                 time: '11:00',
-                location: 'Rr e Barrikadave, Tirane'
+                location: 'Rr e Barrikadave, Tirane',
+                status: 'Anulluar'
             }
         ];
 
@@ -56,26 +62,20 @@ export class Tickets {
                 return 1;
         });
 
-        console.log(this.tickets);
 
         this.tickets.forEach((ticket) => {
-            let obj = {day: null, month: null}
-            let date = new Date(ticket.date);
-            obj.day = date.getDate();
-            obj.month = this.getMonthName(date.getMonth());
-            console.log(this.existsInArray(obj, this.dates));
-            if (!this.existsInArray(obj, this.dates)){
+            if(this.dates.length > 0 && this.dates[this.dates.length - 1].date === ticket.date){
+                this.dates[this.dates.length-1].tickets.push(ticket);
+            }
+            else {
+                let obj = {date: null, tickets: []}
+                obj.date = ticket.date;
+                obj.tickets.push(ticket);
                 this.dates.push(obj);
             }
+            
         });
         
-        // this.dates = this.tickets.map((ticket) => {
-        //     let obj = {day: null, month: null}
-        //     let date = new Date(ticket.date);
-        //     obj.day = date.getDate();
-        //     obj.month = this.getMonthName(date.getMonth());
-        //     return obj;
-        // });
     }
 
     ionViewDidLoad() {
@@ -88,12 +88,12 @@ export class Tickets {
         return months[index];
     }
 
-    existsInArray(obj, arr){
-        return arr.forEach((el) => {
-            if (JSON.stringify(obj) == JSON.stringify(el))
-                return true;
-        });
-        // return false;
+    getDate(dateString) {
+        return new Date(dateString).getDate();
+    }
+
+    getMonth(dateString) {
+        return this.getMonthName(new Date(dateString).getMonth());
     }
 
 }
