@@ -1,21 +1,52 @@
-<ion-header>
+<!--<ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Home</ion-title>
     </ion-navbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content padding>
-    <ion-card class="main-card">
-        <img src="../../assets/Receptionist.jpg"/>
-        <div class="overlay">
+    <ion-card class="main-card" (click)="itemSelected('tickets')">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-ticket"></i></div>
+            <div class="cover"  [ngStyle]="{'background-image': 'url(../../assets/img/Receptionist.jpg)'}"></div>
         </div>
         <ion-card-content class="main-card-content">
             <ion-card-title class="main-card-title">
                 <span class="title">
                     E-TICKETS
+                </span>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="main-card">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-info-circle"></i></div>
+            <div class="cover" [ngStyle]="{'background-image': 'url(../../assets/img/brochures.jpg)'}"></div>
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="title">
+                    INFORMATION
+                </span>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="main-card">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-phone"></i></div>
+            <div class="cover" [ngStyle]="{'background-image': 'url(../../assets/img/coll.jpg)'}"></div>
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="title">
+                    CALL CENTER
                 </span>
                 <ion-icon name="arrow-forward"></ion-icon>
             </ion-card-title>
