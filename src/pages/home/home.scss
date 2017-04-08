@@ -1,28 +1,28 @@
 page-home {
-    .menu-block{
-        font-size: 2rem;
-        padding: 32px;
-        background: color($colors, primary);
-        // border: 1px solid color($colors, primary);
-        margin-bottom: 25px;
 
-        .fa{
-                position: relative;
-                left: 35px;
-                top: 40px;
-                font-size: 3.5rem;
-            }
-        
-        h3{
-            color: color($colors, light);
-            margin: 0;
-            margin-left: 35px;
-            font-weight: 300;
-            text-transform: uppercase;
-
-            ion-icon{
-                float: right;
-            }
+    .main-card{
+        .overlay{
+            height: 10px;
         }
+    }
+
+    .main-card-content{
+        background: color($colors, primary);
+        
+    }
+
+    .main-card-title{
+        text-align: right;
+
+        .title{
+            margin-right: 15px;
+            font-weight: 300;
+            color: color($colors, light);
+        }
+    }
+
+    ion-icon{
+        float: right;
+        color: color($colors, light);
     }
 }
