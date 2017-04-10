@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpModule } from '@angular/http';
 
+import { TicketsProvider } from '../providers/tickets-provider';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +39,8 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TicketsProvider
   ]
 })
 export class AppModule {}

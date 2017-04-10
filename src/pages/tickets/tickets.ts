@@ -15,8 +15,8 @@ import { LoadingController } from 'ionic-angular';
 @IonicPage()
 @Component({
     selector: 'page-tickets',
-    templateUrl: 'tickets.html',
-    providers: [TicketsProvider]
+    templateUrl: 'tickets.html'
+    // providers: [TicketsProvider]
 })
 export class Tickets {
     dates: any[];
@@ -49,18 +49,19 @@ export class Tickets {
     }
 
     createTicket(){
-        let date = `2017-${this.getRandomInt(1, 12)}-${this.getRandomInt(1, 28)}`
-        let ticket = {
-            date: date,
-            time: '14:50',
-            location: 'Rr e Barrikadave, Tirane',
-            status: 'Ne pritje per aprovim'
-        }
+        // let date = `2017-${this.getRandomInt(1, 12)}-${this.getRandomInt(1, 28)}`
+        // let ticket = {
+        //     date: date,
+        //     time: '14:50',
+        //     location: 'Rr e Barrikadave, Tirane',
+        //     status: 'Ne pritje per aprovim'
+        // }
 
-        this.ticketsProvider.create(ticket).then((newTicket) => {
-            this.tickets.push(newTicket);
-            this.buildDatesObject();
-        })
+        // this.ticketsProvider.create(ticket).then((newTicket) => {
+        //     this.tickets.push(newTicket);
+        //     this.buildDatesObject();
+        // })
+        this.navCtrl.push("CreateTicket");
     }
 
     getMonthName(index){

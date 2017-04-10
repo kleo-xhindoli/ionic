@@ -1,0 +1,42 @@
+<!--
+  Generated template for the CreateTicket page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+
+  monthNames="Janar, Shkurt, Mars, Prill, Maj, Qershor, Korrik, Gusht, Shtator, Tetor, Nentor, Dhjetor"
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Krijo Ticket</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Data e rezervimit</ion-label>
+        <ion-datetime 
+            displayFormat="DD MMMM YYYY"
+            monthNames="Janar, Shkurt, Mars, Prill, Maj, Qershor, Korrik, Gusht, Shtator, Tetor, Nentor, Dhjetor"
+            [min]="minDate"
+            [(ngModel)]="date"> 
+        </ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label class="input-label"><ion-icon ios="ios-time-outline" md="md-time" class="label-icon"></ion-icon>Ora e rezervimit</ion-label>
+        <ion-datetime displayFormat="HH:mm" min="08:00" max="16:59" [(ngModel)]="time">
+        </ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label class="input-label"><ion-icon name="pin" class="label-icon"></ion-icon>Zyrat</ion-label>
+        <ion-select [(ngModel)]="location">
+            <ion-option value="Rr. e Barrikadave, Tirane">Rr. e Barrikadave, Tirane</ion-option>
+            <ion-option value="Blv. Zogu I, Tirane">Blv. Zogu I, Tirane</ion-option>
+            <ion-option value="Sheshi Nene Tereza, Tirane">Sheshi Nene Tereza, Tirane</ion-option>
+        </ion-select>
+    </ion-item>
+    <button ion-button block class="block-button" (click)="createTicket()">Rezervo</button>
+</ion-content>

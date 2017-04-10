@@ -41,6 +41,9 @@ export class TicketsProvider {
     }
 
     create(ticket) {
+        if (!ticket.status){
+            ticket.status = "Ne pritje per aprovim";
+        }
         let body = JSON.stringify(ticket);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
