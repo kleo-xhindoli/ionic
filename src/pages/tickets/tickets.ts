@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TicketsProvider } from '../../providers/tickets-provider';
 import { LoadingController } from 'ionic-angular';
 
-
+import { CreateTicket } from '../create-ticket/create-ticket';
 
 
 /**
@@ -30,38 +30,27 @@ export class Tickets {
     ) {
 
         this.dates = [];
+        // this.loader = this.loadingCtrl.create({
+        //     content: "Duke ngarkuar..."
+        // });
         
     }
 
     ngOnInit(){
-        let loader = this.loadingCtrl.create({
-            content: "Duke ngarkuar..."
-        });
-        loader.present();
         this.ticketsProvider.getTickets().then((tickets) => {
             this.tickets = tickets;
             this.buildDatesObject();
-            loader.dismiss();
-        });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     ionViewDidLoad() {
     }
 
     createTicket(){
-        // let date = `2017-${this.getRandomInt(1, 12)}-${this.getRandomInt(1, 28)}`
-        // let ticket = {
-        //     date: date,
-        //     time: '14:50',
-        //     location: 'Rr e Barrikadave, Tirane',
-        //     status: 'Ne pritje per aprovim'
-        // }
-
-        // this.ticketsProvider.create(ticket).then((newTicket) => {
-        //     this.tickets.push(newTicket);
-        //     this.buildDatesObject();
-        // })
-        this.navCtrl.push("CreateTicket");
+        this.navCtrl.push(CreateTicket);
     }
 
     getMonthName(index){

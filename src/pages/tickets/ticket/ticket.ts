@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from './pop-over';
 
 @Component({
     selector: 'ticket',
@@ -8,7 +10,7 @@ import { Component } from '@angular/core';
 
 export class Ticket {
     ticketitem : any;
-    constructor() {
+    constructor(public popoverCtrl: PopoverController) {
     }
 
     getStatusColor(status){
@@ -31,6 +33,13 @@ export class Ticket {
             default: 
                 return 'help-circle';
         }
+    }
+
+    showMenu(evt){
+        let menu = this.popoverCtrl.create(PopoverPage);
+        menu.present({
+            ev: evt
+        });
     }
 
 }

@@ -36,7 +36,7 @@ export class CreateTicket {
         }
         this.ticketsProvider.create(ticket)
         .then(() => {
-            this.navCtrl.push(Tickets);
+            this.navCtrl.pop();
         })
         .catch((err) => {
             console.log(err);

@@ -6,9 +6,9 @@ import { CreateTicket } from './create-ticket';
   declarations: [
     CreateTicket,
   ],
-  imports: [
-    IonicPageModule.forChild(CreateTicket),
-  ],
+  // imports: [
+  //   IonicPageModule.forChild(CreateTicket),
+  // ],
   exports: [
     CreateTicket
   ]

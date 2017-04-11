@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Tickets } from '../pages/tickets/tickets';
 import { Ticket } from '../pages/tickets/ticket/ticket';
+import { PopoverPage } from '../pages/tickets/ticket/pop-over';
+import { CreateTicket } from '../pages/create-ticket/create-ticket';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +23,9 @@ import { TicketsProvider } from '../providers/tickets-provider';
     HomePage,
     ListPage,
     Tickets,
-    Ticket
+    Ticket,
+    PopoverPage,
+    CreateTicket
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { TicketsProvider } from '../providers/tickets-provider';
     HomePage,
     ListPage,
     Tickets,
-    Ticket
+    Ticket,
+    PopoverPage,
+    CreateTicket
   ],
   providers: [
     StatusBar,
