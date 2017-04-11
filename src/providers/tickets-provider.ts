@@ -12,7 +12,7 @@ import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class TicketsProvider {
     data: any[];
-    url = 'http://localhost:3000/tickets';
+    url = 'http://52.166.71.231:3000/tickets';
 
     constructor(public http: Http) {
     }
@@ -26,7 +26,7 @@ export class TicketsProvider {
                 this.http.get(this.url)
                 .map(res => res.json())
                 .catch((err) =>{
-                    return Observable.throw(err.json().error || 'Server error');
+                    return Observable.throw(err || 'Server error');
                 })
                 .subscribe(data => {
                     this.data = data;
@@ -34,6 +34,7 @@ export class TicketsProvider {
                 },
                 err => {
                     this.data = this.getDummyData();
+                    console.log(err);
                     resolve(this.data);
                 })
             });
