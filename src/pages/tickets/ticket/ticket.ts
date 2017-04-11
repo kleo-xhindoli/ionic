@@ -36,7 +36,7 @@ export class Ticket {
     }
 
     showMenu(evt){
-        let menu = this.popoverCtrl.create(PopoverPage);
+        let menu = this.popoverCtrl.create(PopoverPage, {ticketitem: this.ticketitem});
         menu.present({
             ev: evt
         });

@@ -36,17 +36,18 @@ export class Tickets {
         
     }
 
-    ngOnInit(){
+    ionViewDidEnter() {
+        console.log('did enter');
         this.ticketsProvider.getTickets().then((tickets) => {
+            console.log('got tickets');
+            this.dates = [];
             this.tickets = tickets;
+
             this.buildDatesObject();
         })
         .catch((err) => {
             console.log(err);
         })
-    }
-
-    ionViewDidLoad() {
     }
 
     createTicket(){

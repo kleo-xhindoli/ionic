@@ -55,13 +55,43 @@ export class TicketsProvider {
             })
             .subscribe(data => {
                 console.log(data);
-                // this.data.push(data);
+                this.data.push(data);
                 resolve(data);
             },
             err => {
                 reject(err);
             })
         });
+    }
+
+    cancel(id){
+        let ticket = this.getById(id);
+        ticket.status = 'Ne pritje per anullim';
+
+        let body = JSON.stringify(ticket);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return new Promise((resolve, reject) => {
+            this.http.put(this.url + `/${id}`, body, options)
+            .map(res => res.json())
+            .catch((err) =>{
+                return Observable.throw(err.json().error || 'Server error');
+            })
+            .subscribe(data => {
+                console.log(data);
+                resolve(data);
+            },
+            err => {
+                reject(err);
+            })
+        });
+
+    }
+
+    getById(id) {
+        if(this.data) {
+            return this.data.find((el) => { return el.id === id });
+        }
     }
 
     getDummyData(){
