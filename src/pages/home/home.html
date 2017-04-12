@@ -8,7 +8,7 @@
 </ion-header>-->
 
 <ion-content padding>
-    <ion-card class="main-card" (click)="itemSelected('tickets')">
+    <ion-card class="main-card" (click)="goToModule('tickets')">
         <div class="card-header">
             <div class="overlay"><i class="fa fa-ticket"></i></div>
             <div class="cover"  [ngStyle]="{'background-image': 'url(https://marketingepic.com/wp-content/uploads/2015/04/Receptionist.jpg?x28678)'}"></div>
@@ -23,7 +23,7 @@
         </ion-card-content>
     </ion-card>
 
-    <ion-card class="main-card">
+    <ion-card class="main-card" (click)="goToModule('information')">
         <div class="card-header">
             <div class="overlay"><i class="fa fa-info-circle"></i></div>
             <div class="cover" [ngStyle]="{'background-image': 'url(http://www.goldeneagleluxurytrains.com/img/brochures-header-m.jpg)'}"></div>

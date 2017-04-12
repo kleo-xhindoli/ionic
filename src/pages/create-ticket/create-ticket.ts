@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Tickets } from '../tickets/tickets';
+// import { Tickets } from '../tickets/tickets';
 import { TicketsProvider } from '../../providers/tickets-provider';
 
 /**

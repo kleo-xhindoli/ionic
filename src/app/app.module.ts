@@ -9,6 +9,8 @@ import { Tickets } from '../pages/tickets/tickets';
 import { Ticket } from '../pages/tickets/ticket/ticket';
 import { PopoverPage } from '../pages/tickets/ticket/pop-over';
 import { CreateTicket } from '../pages/create-ticket/create-ticket';
+import { Information } from '../pages/information/information';
+import { InfoTabs } from '../pages/info-tabs/info-tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +27,9 @@ import { TicketsProvider } from '../providers/tickets-provider';
     Tickets,
     Ticket,
     PopoverPage,
-    CreateTicket
+    CreateTicket,
+    Information,
+    InfoTabs
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { TicketsProvider } from '../providers/tickets-provider';
     Tickets,
     Ticket,
     PopoverPage,
-    CreateTicket
+    CreateTicket,
+    Information,
+    InfoTabs
   ],
   providers: [
     StatusBar,
