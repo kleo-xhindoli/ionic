@@ -13,7 +13,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     templateUrl: 'information.html',
 })
 export class Information {
+    showFilters: boolean;
+    content: string;
     constructor(public navCtrl: NavController, public navParams: NavParams) {
+        this.showFilters = false;
+        this.content = `<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Tempore fugit veniam aut repudiandae tempora commodi a laboriosam nobis omnis perspiciatis, eius vel excepturi recusandae numquam vero in, cum rem culpa.`
     }
 
     ionViewDidLoad() {
@@ -27,6 +31,10 @@ export class Information {
 
     getItems(ev){
         console.log(ev);
+    }
+
+    toggleFilters(){
+        this.showFilters = !this.showFilters;
     }
 
 }

@@ -13,25 +13,51 @@
 </ion-header>
 
 
-<ion-content padding class="grey-bg">
+<ion-content padding class="grey-bg" [ngClass]="{'no-scroll': showFilters}">
 
-    <ion-searchbar class="info-search" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar class="info-search" (ionInput)="getItems($event)" (click)="showFilters = true"></ion-searchbar>
+    <div class="filters animated slideInUp" padding *ngIf="showFilters">
+        <!--<button ion-button icon-only clear medium color="light">
+            <ion-icon name="close"></ion-icon>
+        </button>-->
+        <ion-item>
+            <ion-label class="input-label">Kategoria</ion-label>
+            <ion-select>
+                <ion-option value="Shendetesia">Shendetesia</ion-option>
+                <ion-option value="Arsimi">Arsimi</ion-option>
+                <ion-option value="Hipoteka">Hipoteka</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label class="input-label">Nenkategoria</ion-label>
+            <ion-select>
+                <ion-option value="Shendetesia">Shendetesia</ion-option>
+                <ion-option value="Arsimi">Arsimi</ion-option>
+                <ion-option value="Hipoteka">Hipoteka</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-button block class="filter-button" (click)="showFilters = false">Filtro Rezultatet</button>
+        
+    </div>
 
     <ion-card class="info-card" *ngFor="let card of [1, 2, 3, 4, 5, 6]">
         <button ion-button icon-only clear class="bookmark-button">
             <ion-icon name="bookmark"></ion-icon>
+            <!--<i class="fa fa-bookmark"></i>-->
         </button>
         <ion-card-content>
             <ion-card-title>
                 Mein Herz brennt
             </ion-card-title>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fugit veniam aut repudiandae tempora commodi a laboriosam nobis omnis perspiciatis, eius vel excepturi recusandae numquam vero in, cum rem culpa.
+            <p [innerHTML]="content">
+                
             </p>
             <hr>
             <ion-note class="category">
-                Shendetesia
+                Shendetesia > Zemra
             </ion-note>
         </ion-card-content>
     </ion-card>
+    
+        
 </ion-content>
