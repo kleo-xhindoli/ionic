@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { InfoSingle } from '../info-single/info-single';
+import { InfoCardsProvider } from '../../providers/info-cards-provider';
 
 /**
  * Generated class for the Information page.
@@ -15,9 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class Information {
     showFilters: boolean;
     content: string;
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    closingFilters: boolean;
+    infoCards: any[];
+    constructor(public navCtrl: NavController, public navParams: NavParams, public infoProvider: InfoCardsProvider) {
         this.showFilters = false;
-        this.content = `<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Tempore fugit veniam aut repudiandae tempora commodi a laboriosam nobis omnis perspiciatis, eius vel excepturi recusandae numquam vero in, cum rem culpa.`
+        this.closingFilters = false;
+        this.infoCards = [];
     }
 
     ionViewDidLoad() {
@@ -25,7 +30,11 @@ export class Information {
     }
 
     ionViewDidEnter() {
-        console.log(this.navParams.data);
+        // console.log(this.navParams.data);
+        this.infoProvider.getInfoCards()
+        .then((data: any[]) => {
+            this.infoCards = data;
+        })
 
     }
 
@@ -33,8 +42,23 @@ export class Information {
         console.log(ev);
     }
 
-    toggleFilters(){
-        this.showFilters = !this.showFilters;
+    showSingleFor(card){
+        this.navCtrl.push(InfoSingle, card);
+    }
+
+    toggleFilters(state){
+        if (!state)
+            this.showFilters = !this.showFilters;
+        else if (state === 'open') {
+            this.showFilters = true;
+        }
+        else {
+            this.closingFilters = true;
+            setTimeout(() => {
+                this.showFilters = false;
+                this.closingFilters = false;
+            }, 300);
+        }
     }
 
 }

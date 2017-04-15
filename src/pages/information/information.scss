@@ -43,12 +43,46 @@ page-information {
         background: white;
         z-index: 1;
 
+        ion-item{
+            padding: 0;
+        }
+
         .input-label{
             color: #ddd;
         }
 
         .filter-button{
             margin-top: 15px;
+        }
+
+        .close-filters{
+            font-size: 2em;
+            float: right;
+            color: #ddd;
+            cursor: pointer;
+            margin-right: 10px;
+
+            &.icon-md{
+                font-size: 1.5em;
+            }
+
+            &:active{
+                color: color($colors, dark);
+            }
+        }
+
+        &.slideInUp {
+            -webkit-animation-name: slideInUp;
+            animation-name: slideInUp;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+        }
+
+        &.slideOutDown {
+            -webkit-animation-name: slideOutDown;
+            animation-name: slideOutDown;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
         }
     }
 }

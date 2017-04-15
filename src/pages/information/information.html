@@ -15,11 +15,9 @@
 
 <ion-content padding class="grey-bg" [ngClass]="{'no-scroll': showFilters}">
 
-    <ion-searchbar class="info-search" (ionInput)="getItems($event)" (click)="showFilters = true"></ion-searchbar>
-    <div class="filters animated slideInUp" padding *ngIf="showFilters">
-        <!--<button ion-button icon-only clear medium color="light">
-            <ion-icon name="close"></ion-icon>
-        </button>-->
+    <ion-searchbar class="info-search" (ionInput)="getItems($event)" (click)="toggleFilters('open')"></ion-searchbar>
+    <div class="filters animated slideInUp" padding *ngIf="showFilters" [ngClass]="{'slideOutDown': closingFilters}">
+        <ion-icon name="close" class="close-filters" (click)="toggleFilters('close')"></ion-icon>
         <ion-item>
             <ion-label class="input-label">Kategoria</ion-label>
             <ion-select>
@@ -36,28 +34,26 @@
                 <ion-option value="Hipoteka">Hipoteka</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button block class="filter-button" (click)="showFilters = false">Filtro Rezultatet</button>
+        <button ion-button block class="filter-button" (click)="toggleFilters('close')">Filtro Rezultatet</button>
         
     </div>
 
-    <ion-card class="info-card" *ngFor="let card of [1, 2, 3, 4, 5, 6]">
+    <ion-card class="info-card" *ngFor="let card of infoCards" (click)="showSingleFor(card)">
         <button ion-button icon-only clear class="bookmark-button">
             <ion-icon name="bookmark"></ion-icon>
-            <!--<i class="fa fa-bookmark"></i>-->
         </button>
         <ion-card-content>
             <ion-card-title>
-                Mein Herz brennt
+                {{card.title}}
             </ion-card-title>
-            <p [innerHTML]="content">
-                
+            <p>
+                {{card.description}}
             </p>
             <hr>
             <ion-note class="category">
-                Shendetesia > Zemra
+                {{card.category}} > {{card.subcategory}}
             </ion-note>
         </ion-card-content>
     </ion-card>
     
-        
 </ion-content>
