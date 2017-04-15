@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { FeedbackModal } from './feedback-modal/feedback-modal';
 /**
  * Generated class for the InfoSingle page.
  *
@@ -14,12 +14,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InfoSingle {
     card: {};
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
         this.card = {};
     }
 
     ionViewDidLoad() {
         this.card = this.navParams.data;
+    }
+
+    showFeedbackModal() {
+        this.navCtrl.push(FeedbackModal);
     }
 
 }

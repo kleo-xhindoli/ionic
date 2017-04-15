@@ -12,6 +12,7 @@ import { CreateTicket } from '../pages/create-ticket/create-ticket';
 import { Information } from '../pages/information/information';
 import { InfoTabs } from '../pages/info-tabs/info-tabs';
 import { InfoSingle } from '../pages/info-single/info-single';
+import { FeedbackModal } from '../pages/info-single/feedback-modal/feedback-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +33,8 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     CreateTicket,
     Information,
     InfoTabs,
-    InfoSingle
+    InfoSingle,
+    FeedbackModal
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     CreateTicket,
     Information,
     InfoTabs,
-    InfoSingle
+    InfoSingle,
+    FeedbackModal
   ],
   providers: [
     StatusBar,

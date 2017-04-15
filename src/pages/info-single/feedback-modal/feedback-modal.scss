@@ -1,0 +1,18 @@
+.feedback-input {
+    border-bottom: 1px solid #ddd;
+
+    &:focus {
+        border-color: color($colors, primary);
+    }
+}
+
+.send-feedback-btn {
+    margin-top: 20px;
+}
+
+.green-toast {
+    .toast-wrapper {
+        background: color($colors, secondary);
+
+    }
+}
