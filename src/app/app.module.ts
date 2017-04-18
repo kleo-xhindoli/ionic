@@ -14,6 +14,7 @@ import { Information } from '../pages/information/information';
 import { InfoTabs } from '../pages/info-tabs/info-tabs';
 import { InfoSingle } from '../pages/info-single/info-single';
 import { FeedbackModal } from '../pages/info-single/feedback-modal/feedback-modal';
+import { Login } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,8 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     Information,
     InfoTabs,
     InfoSingle,
-    FeedbackModal
+    FeedbackModal,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     Information,
     InfoTabs,
     InfoSingle,
-    FeedbackModal
+    FeedbackModal,
+    Login
   ],
   providers: [
     StatusBar,
