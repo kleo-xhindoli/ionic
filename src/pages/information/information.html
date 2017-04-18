@@ -43,10 +43,8 @@
         
     </div>
 
-    <!--(click)="showSingleFor(card)"-->
-
-    <ion-card class="info-card" *ngFor="let card of infoCards" >
-        <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark(card.id)" 
+    <ion-card class="info-card" *ngFor="let card of infoCards" (click)="showSingleFor(card)">
+        <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card.id)" 
         [color]="isBookmark(card.id)? 'primary' : 'light'">
             <ion-icon name="bookmark"></ion-icon>
         </button>

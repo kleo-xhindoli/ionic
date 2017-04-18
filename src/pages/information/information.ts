@@ -62,7 +62,8 @@ export class Information {
         }
     }
 
-    toggleBookmark(id){
+    toggleBookmark(ev, id){
+        ev.stopPropagation();
         this.infoProvider.bookmark(id).then(() => {
             this.updateView();
         })
