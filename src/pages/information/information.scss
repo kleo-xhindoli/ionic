@@ -21,7 +21,7 @@ page-information {
         margin: 0;
         top: -10px;
         right: 0;
-        color: #ddd;
+        // color: #ddd;
     }
 
     .category {
@@ -42,6 +42,7 @@ page-information {
         left: 0;
         background: white;
         z-index: 1;
+        overflow-y: scroll;
 
         ion-item{
             padding: 0;
@@ -55,21 +56,21 @@ page-information {
             margin-top: 15px;
         }
 
-        .close-filters{
-            font-size: 2em;
-            float: right;
-            color: #ddd;
-            cursor: pointer;
-            margin-right: 10px;
+        // .close-filters{
+        //     font-size: 2em;
+        //     float: right;
+        //     color: #ddd;
+        //     cursor: pointer;
+        //     margin-right: 10px;
 
-            &.icon-md{
-                font-size: 1.5em;
-            }
+        //     &.icon-md{
+        //         font-size: 1.5em;
+        //     }
 
-            &:active{
-                color: color($colors, dark);
-            }
-        }
+        //     &:active{
+        //         color: color($colors, dark);
+        //     }
+        // }
 
         &.slideInUp {
             -webkit-animation-name: slideInUp;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,14 +12,63 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class InfoCardsProvider {
     infoCards: any[];
-    constructor(public http: Http) {
-        console.log('Hello InfoCardsProvider Provider');
+    bookmarks: any[];
+    bookmarkIds: string[];
+    constructor(public http: Http, public storage: Storage) {
+        this.bookmarks = [];
+        this.bookmarkIds = [];
     }
 
     getInfoCards(){
         return new Promise((resolve, reject) => {
             this.infoCards = this.getDummyCards();
             resolve(this.infoCards);
+        })
+    }
+
+    bookmark(id) {
+        console.log(id);
+        if(this.bookmarkIds.indexOf(id.toString()) === -1){
+            return this.storage.ready().then(() => {
+                return this.storage.set(id.toString(), true);
+            })
+        }
+        else {
+            return this.storage.ready()
+            .then(() => {
+                return this.storage.remove(id.toString());
+            })
+        }
+    }
+
+    getBookmarks() {
+        if(!this.infoCards){
+            return this.getInfoCards().then(() => {
+                return this.getBookmarks();
+            })
+        }
+        this.bookmarks = [];
+        return this.storage.ready()
+        .then(() => {
+            return this.storage.keys().then((keys) => {
+                keys.forEach((key) => {
+                    let el =this.infoCards.find((card) => {
+                        return card.id == key;
+                    });
+                    if(el) this.bookmarks.push(el);
+                });
+                return this.bookmarks;
+            })
+        })
+    }
+
+    setBookmarkIds() {
+        return this.storage.ready()
+        .then(() => {
+            this.storage.keys()
+            .then((keys) => {
+                this.bookmarkIds = keys;
+            })
         })
     }
 

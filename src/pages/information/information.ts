@@ -30,12 +30,7 @@ export class Information {
     }
 
     ionViewDidEnter() {
-        // console.log(this.navParams.data);
-        this.infoProvider.getInfoCards()
-        .then((data: any[]) => {
-            this.infoCards = data;
-        })
-
+        this.updateView();
     }
 
     getItems(ev){
@@ -44,6 +39,12 @@ export class Information {
 
     showSingleFor(card){
         this.navCtrl.push(InfoSingle, card);
+    }
+
+    isBookmark(id){
+        if (this.infoProvider.bookmarkIds.indexOf(id.toString()) == -1) 
+            return false;
+        return true;
     }
 
     toggleFilters(state){
@@ -59,6 +60,28 @@ export class Information {
                 this.closingFilters = false;
             }, 300);
         }
+    }
+
+    toggleBookmark(id){
+        this.infoProvider.bookmark(id).then(() => {
+            this.updateView();
+        })
+    }
+
+    updateView(){
+        if(this.navParams.data.isBookmarks === false){
+            this.infoProvider.getInfoCards()
+            .then((data: any[]) => {
+                this.infoCards = data;
+            });
+        }
+        else {
+            this.infoProvider.getBookmarks()
+            .then((bookmarks) => {
+                this.infoCards = bookmarks;
+            });
+        }
+        this.infoProvider.setBookmarkIds();
     }
 
 }
