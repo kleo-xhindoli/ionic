@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CallCenter page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Call Center</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="grey-bg">
+    <ion-card class="main-card" (click)="callAdisa()">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-phone"></i></div>
+            <!--<div class="cover" [ngStyle]="{'background-image': 'url(http://www.tematv.al/sites/default/files/coll.jpg)'}"></div>-->
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="header">
+                    TELEFONO CALL CENTER
+                </span>
+                <!--<ion-icon name="arrow-forward"></ion-icon>-->
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="main-card" (click)="openChat()">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-comments"></i></div>
+            <!--<div class="cover" [ngStyle]="{'background-image': 'url(https://cdn.pixabay.com/photo/2016/04/01/11/09/cartoon-1300224_960_720.png)'}"></div>-->
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="header">
+                    CHAT
+                </span>
+                <!--<ion-icon name="arrow-forward"></ion-icon>-->
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

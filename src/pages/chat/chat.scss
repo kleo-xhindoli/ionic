@@ -1,0 +1,58 @@
+page-chat {
+    .info{
+        text-align: center;
+        ion-note{
+            font-size: .7em;
+
+        }
+    }
+
+    .chat-bubble{
+        margin: 0 0 12px 0;
+        min-width: 20%;
+        max-width: 80%;
+        background: #ddd;
+        border-radius: 5px;
+        // color: white;
+
+        &.mine{
+            float: right;
+            background: white;
+            color: color($colors, dark);
+        }
+
+        .time{
+            display: block;
+            text-align: right;
+            color: white;
+            
+            &.mine{
+                color: #ddd;
+            }
+
+            &.hide-time{
+                display: none;
+            }
+        }
+    }
+
+    .text-box{
+        width: 100%;
+        background: white;
+        padding: 15px;
+        height: 65px;
+
+        #msg-input{
+            input{
+                margin: 0;
+            }
+        }
+    }
+
+    .send-button{
+        font-size: 2em;
+        text-align: center;
+    }
+
+
+}

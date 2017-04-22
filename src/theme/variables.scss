@@ -24,7 +24,7 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-    primary:    #fa9e1e,
+    primary:    #f2672a,
     secondary:  #32db64,
     danger:     #f53d3d,
     light:      #f4f4f4,
@@ -32,11 +32,13 @@ $colors: (
     warning:    #f7da09
 );
 
-$toolbar-background: #FA9E1E;
-$toolbar-border-color: #FA9E1E;
+$toolbar-background: #f2672a;
+$toolbar-border-color: #f2672a;
 $toolbar-text-color: #fff;
-$toolbar-active-color: #FA9E1E;
-$toolbar-inactive-color: #FA9E1E;
+$toolbar-active-color: #f2672a;
+$toolbar-inactive-color: #f2672a;
+
+//FA9E1E
 
 // App iOS Variables
 // --------------------------------------------------

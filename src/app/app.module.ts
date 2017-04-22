@@ -15,6 +15,9 @@ import { InfoTabs } from '../pages/info-tabs/info-tabs';
 import { InfoSingle } from '../pages/info-single/info-single';
 import { FeedbackModal } from '../pages/info-single/feedback-modal/feedback-modal';
 import { Login } from '../pages/login/login';
+import { Register } from '../pages/register/register';
+import { CallCenter } from '../pages/call-center/call-center';
+import { Chat } from '../pages/chat/chat';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +40,10 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     InfoTabs,
     InfoSingle,
     FeedbackModal,
-    Login
+    Login,
+    Register,
+    CallCenter,
+    Chat
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,10 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     InfoTabs,
     InfoSingle,
     FeedbackModal,
-    Login
+    Login,
+    Register,
+    CallCenter,
+    Chat
   ],
   providers: [
     StatusBar,

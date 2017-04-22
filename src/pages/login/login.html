@@ -14,10 +14,13 @@
 
 
 <ion-content padding>
-        <img src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
+        <div class="logo">
+            <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
+            <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
+        </div>
         <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label floating>E-mail</ion-label>
+            <ion-input type="email"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -27,7 +30,8 @@
         
         <div class="button-wrapper">
             <div class="button" color="primary">
-                <button ion-button round>LOG IN</button>
+                <button ion-button round (click)="login()">LOG IN</button>
             </div>
         </div>
+        <p class="register-link">Nuk keni llogari? <a (click)="registerPage()">Regjistrohuni ketu</a>.</p>
 </ion-content>

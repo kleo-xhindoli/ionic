@@ -1,34 +1,33 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Register } from '../register/register'
-import { Tickets } from '../tickets/tickets'
+import { Login } from '../login/login';
 
 /**
- * Generated class for the Login page.
+ * Generated class for the Register page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-    selector: 'page-login',
-    templateUrl: 'login.html',
+    selector: 'page-register',
+    templateUrl: 'register.html',
 })
-export class Login {
+export class Register {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad Login');
+        console.log('ionViewDidLoad Register');
     }
 
-    registerPage() {
-        this.navCtrl.push(Register);
+    loginPage(){
+        this.navCtrl.push(Login);
     }
 
-    login() {
-        this.navCtrl.push(Tickets);
+    register() {
+        this.navCtrl.push(Login);
     }
 
 }
