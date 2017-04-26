@@ -20,7 +20,7 @@
 
 <ion-content padding class="grey-bg" [ngClass]="{'no-scroll': showFilters}">
 
-    <ion-searchbar class="info-search" (ionInput)="getItems($event)" (click)="toggleFilters('open')"></ion-searchbar>
+    <ion-searchbar class="info-search" (ionInput)="getItems($event)" (click)="toggleFilters('open')" [(ngModel)]="filters.search"></ion-searchbar>
     <div class="filters animated slideInUp" padding *ngIf="showFilters" [ngClass]="{'slideOutDown': closingFilters}">
         <!--<ion-icon name="close" class="close-filters" (click)="toggleFilters('close')"></ion-icon>-->
         <ion-item>
@@ -43,7 +43,7 @@
         
     </div>
 
-    <ion-card class="info-card" *ngFor="let card of infoCards" (click)="showSingleFor(card)">
+    <ion-card class="info-card" *ngFor="let card of filteredCards" (click)="showSingleFor(card)">
         <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card.id)" 
         [color]="isBookmark(card.id)? 'primary' : 'light'">
             <ion-icon name="bookmark"></ion-icon>

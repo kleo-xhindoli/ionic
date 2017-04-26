@@ -19,10 +19,17 @@ export class Information {
     content: string;
     closingFilters: boolean;
     infoCards: any[];
+    filteredCards: any[];
+    filters: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public infoProvider: InfoCardsProvider) {
         this.showFilters = false;
         this.closingFilters = false;
         this.infoCards = [];
+        this.filters = {
+            search: '',
+            category: null,
+            subcategory: null
+        };
     }
 
     ionViewDidLoad() {
@@ -35,6 +42,7 @@ export class Information {
 
     getItems(ev){
         console.log(ev);
+        this.applyFilters();
     }
 
     showSingleFor(card){
@@ -74,15 +82,40 @@ export class Information {
             this.infoProvider.getInfoCards()
             .then((data: any[]) => {
                 this.infoCards = data;
+                this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
             });
         }
         else {
             this.infoProvider.getBookmarks()
             .then((bookmarks) => {
                 this.infoCards = bookmarks;
+                this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
             });
         }
         this.infoProvider.setBookmarkIds();
+    }
+
+    applyFilters(){
+        this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
+        this.filteredCards = this.filteredCards.filter((card) => {
+            let regex = new RegExp(this.filters.search, 'i');
+            return (card.title.search(regex) !== -1) ||
+                (card.description.search(regex) !== -1) ||
+                (card.content.search(regex) !== -1);
+
+        })
+        .filter((card) => {
+            if(!this.filters.category) return true;
+            else {
+                return this.filters.category === card.category;
+            }
+        })
+        .filter((card) => {
+            if(!this.filters.subcategory) return true;
+            else {
+                return this.filters.subcategory === card.subcategory;
+            }
+        });
     }
 
 }
