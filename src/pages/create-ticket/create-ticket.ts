@@ -39,6 +39,7 @@ export class CreateTicket {
             this.navCtrl.pop();
         })
         .catch((err) => {
+            this.navCtrl.pop();
             console.log(err);
         })
     }

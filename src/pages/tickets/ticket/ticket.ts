@@ -19,6 +19,8 @@ export class Ticket {
                 return '#32db64';
             case 'Anulluar':
                 return '#f53d3d';
+            case 'Ne pritje per anullim':
+                return '#f2672a'
             default: 
                 return '#fa9e1e';
         }

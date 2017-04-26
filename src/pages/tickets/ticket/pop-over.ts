@@ -34,7 +34,7 @@ export class PopoverPage {
                     text: 'Po',
                     handler: () => {
                         console.log('Agree clicked');
-                        this.ticketsProvider.cancel(this.navParams.get('ticketitem').id);
+                        this.ticketsProvider.cancel(this.navParams.get('ticketitem')._id);
                         this.viewCtrl.dismiss();
                     }
                 }

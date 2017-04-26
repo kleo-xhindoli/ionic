@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import { Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
+import { API } from './api';
+
 /*
   Generated class for the InfoCardsProvider provider.
 
@@ -17,10 +19,10 @@ export class InfoCardsProvider {
     bookmarks: any[];
     bookmarkIds: string[];
     url: string;
-    constructor(public http: Http, public storage: Storage) {
+    constructor(public http: Http, public storage: Storage, public api: API) {
         this.bookmarks = [];
         this.bookmarkIds = [];
-        this.url = 'http://localhost:3000/infocards';
+        this.url = '/infocards';
     }
 
     getInfoCards(){
@@ -32,22 +34,31 @@ export class InfoCardsProvider {
             return Promise.resolve(this.infoCards);
         }
         else {            
-            return new Promise(resolve => {
-                this.http.get(this.url)
-                .map(res => res.json())
-                .catch((err) =>{
-                    return Observable.throw(err || 'Server error');
-                })
-                .subscribe(data => {
-                    this.infoCards = data;
-                    resolve(this.infoCards);
-                },
-                err => {
-                    this.infoCards = this.getDummyCards();
-                    console.log(err);
-                    resolve(this.infoCards);
-                })
-            });
+            // return new Promise(resolve => {
+            //     this.http.get(this.url)
+            //     .map(res => res.json())
+            //     .catch((err) =>{
+            //         return Observable.throw(err || 'Server error');
+            //     })
+            //     .subscribe(data => {
+            //         this.infoCards = data;
+            //         resolve(this.infoCards);
+            //     },
+            //     err => {
+            //         this.infoCards = this.getDummyCards();
+            //         console.log(err);
+            //         resolve(this.infoCards);
+            //     })
+            // });
+            return this.api.get(this.url).then((cards: any) => {
+                this.infoCards = cards;
+                return cards;
+            })
+            .catch((err) => {
+                console.log(err);
+                this.infoCards = this.getDummyCards();
+                return this.infoCards;
+            })
         }
     }
 
