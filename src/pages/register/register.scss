@@ -29,4 +29,10 @@ page-register {
         color: #ccc;
     }
 
+    .error{
+        text-align: center;
+        color: color($colors, danger);
+        font-weight: bold;
+    }
+
 }

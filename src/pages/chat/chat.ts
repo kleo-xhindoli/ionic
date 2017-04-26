@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, ModalController } from 'ionic-angular';
+import { Login } from '../login/login';
+import { LocalStorage } from '../../providers/local-storage'
 
 /**
  * Generated class for the Chat page.
@@ -17,12 +19,15 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 })
 export class Chat {
     @ViewChild(Content) content: Content;
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public ls: LocalStorage, public modalCtrl: ModalController) {
     }
 
-    ionViewDidLoad() {
-        console.log(this.content);
-        this.content.scrollToBottom(300);
+    ionViewDidEnter() {
+        if(!this.ls.isLogged()){
+            let contactModal = this.modalCtrl.create(Login);
+            contactModal.present();
+        }
+        // this.content.scrollToBottom(300);
     }
 
 }

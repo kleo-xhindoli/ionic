@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Register } from '../register/register'
-import { Tickets } from '../tickets/tickets'
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+
+import { Register } from '../register/register';
+import { HomePage } from '../home/home';
+import { AuthProvider } from '../../providers/auth-provider';
+import { LocalStorage } from '../../providers/local-storage';
 
 /**
  * Generated class for the Login page.
@@ -9,26 +12,45 @@ import { Tickets } from '../tickets/tickets'
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
+// @IonicPage()
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html',
 })
 export class Login {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    username: string;
+    password: string;
+    error: boolean;
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams, 
+        public auth: AuthProvider, 
+        public ls: LocalStorage, 
+        public viewCtrl: ViewController,
+        public modalCtrl: ModalController
+    ) {
+        this.error = false
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad Login');
-    }
 
     registerPage() {
-        this.navCtrl.push(Register);
+        let contactModal = this.modalCtrl.create(Register);
+            contactModal.present();
     }
 
     login() {
-        this.navCtrl.push(Tickets);
+        this.auth.logIn(this.username, this.password).then((result) => {
+            this.viewCtrl.dismiss();
+        })
+        .catch((err) => {
+            this.error = true;
+            console.log(err);
+        })
+    }
+
+    dismiss() {
+        this.navCtrl.push(HomePage);
     }
 
 }

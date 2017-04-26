@@ -26,6 +26,8 @@ import { HttpModule } from '@angular/http';
 
 import { TicketsProvider } from '../providers/tickets-provider';
 import { InfoCardsProvider } from '../providers/info-cards-provider';
+import { AuthProvider } from '../providers/auth-provider';
+import { LocalStorage } from '../providers/local-storage';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TicketsProvider,
-    InfoCardsProvider
+    InfoCardsProvider,
+    AuthProvider,
+    LocalStorage
   ]
 })
 export class AppModule {}

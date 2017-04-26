@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TicketsProvider } from '../../providers/tickets-provider';
+import { LocalStorage } from '../../providers/local-storage';
 import { LoadingController } from 'ionic-angular';
 
 import { CreateTicket } from '../create-ticket/create-ticket';
+import { Login } from '../login/login';
 
 
 /**
@@ -26,7 +28,9 @@ export class Tickets {
         public navCtrl: NavController, 
         public navParams: NavParams, 
         public ticketsProvider: TicketsProvider,
-        public loadingCtrl: LoadingController
+        public loadingCtrl: LoadingController,
+        public ls: LocalStorage,
+        public modalCtrl: ModalController
     ) {
 
         this.dates = [];
@@ -37,17 +41,23 @@ export class Tickets {
     }
 
     ionViewDidEnter() {
-        console.log('did enter');
-        this.ticketsProvider.getTickets().then((tickets) => {
-            console.log('got tickets');
-            this.dates = [];
-            this.tickets = tickets;
+        if (!this.ls.isLogged()){
+            let contactModal = this.modalCtrl.create(Login);
+            contactModal.present();
+        }
+        else {
+            this.ticketsProvider.getTickets().then((tickets: any) => {
+                console.log('got tickets');
+                this.dates = [];
+                this.tickets = tickets;
 
-            this.buildDatesObject();
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+                this.buildDatesObject();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
+        
     }
 
     createTicket(){

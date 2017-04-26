@@ -8,6 +8,11 @@
 
     <ion-navbar>
         <ion-title>Regjistrohun</ion-title>
+        <ion-buttons end (click)="dismiss()">
+            <button ion-button icon-only>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
@@ -24,13 +29,18 @@
     </ion-item>
 
     <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
         <ion-label floating>Emri</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="firstname"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Mbiemri</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="lastname"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -40,13 +50,15 @@
 
     <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Konfirmo Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="confirm"></ion-input>
     </ion-item>
+
+    <p class="error" *ngIf="error">{{errorStr}}</p>
     
     <div class="button-wrapper">
         <div class="button" color="primary">

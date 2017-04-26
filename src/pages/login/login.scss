@@ -28,4 +28,10 @@ page-login {
         font-size: 1em;
         color: #ccc;
     }
+
+    .error{
+        text-align: center;
+        color: color($colors, danger);
+        font-weight: bold;
+    }
 }
