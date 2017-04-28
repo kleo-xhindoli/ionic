@@ -38,5 +38,13 @@
             <ion-option value="Sheshi Nene Tereza, Tirane">Sheshi Nene Tereza, Tirane</ion-option>
         </ion-select>
     </ion-item>
+    <ion-item>
+        <ion-label class="input-label"><ion-icon name="help-buoy" class="label-icon"></ion-icon>Sherbimi</ion-label>
+        <ion-select [(ngModel)]="service">
+            <ion-option value="Hipoteka">Hipoteka</ion-option>
+            <ion-option value="Legjistlacioni">Legjistlacioni</ion-option>
+            <ion-option value="Arsimi">Arsimi</ion-option>
+        </ion-select>
+    </ion-item>
     <button ion-button block class="block-button" (click)="createTicket()">Rezervo</button>
 </ion-content>

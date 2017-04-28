@@ -24,7 +24,6 @@ export class API {
             headers.append('x-access-token', this.ls.getToken());
         }
         let opt = new RequestOptions({headers: headers});
-        console.log(opt);
         return new Promise((resolve, reject) => {
             this.http.get(this.apiUrl + route, opt)
             .map(res => res.json())
@@ -46,9 +45,7 @@ export class API {
             headers.append('x-access-token', this.ls.getToken());
         }
         let opt = new RequestOptions({headers: headers});
-        console.log(opt);
         // req = JSON.stringify(req);
-        console.log(req);
         return new Promise((resolve, reject) => {
             this.http.post(this.apiUrl + route, req, opt)
             .map(res => res.json())

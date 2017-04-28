@@ -25,27 +25,34 @@
         <!--<ion-icon name="close" class="close-filters" (click)="toggleFilters('close')"></ion-icon>-->
         <ion-item>
             <ion-label class="input-label">Kategoria</ion-label>
-            <ion-select>
-                <ion-option value="Shendetesia">Shendetesia</ion-option>
-                <ion-option value="Arsimi">Arsimi</ion-option>
-                <ion-option value="Hipoteka">Hipoteka</ion-option>
+            <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.category">
+                <ion-option value="">Te gjitha</ion-option>
+                <ion-option value="Legistlation">Legistlation</ion-option>
+                <ion-option value="Countries">Countries</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label class="input-label">Nenkategoria</ion-label>
-            <ion-select>
-                <ion-option value="Shendetesia">Shendetesia</ion-option>
-                <ion-option value="Arsimi">Arsimi</ion-option>
-                <ion-option value="Hipoteka">Hipoteka</ion-option>
+            <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.subcategory">
+                <ion-option value="">Te gjitha</ion-option>
+                <ion-option value="Healthcare">Healthcare</ion-option>
+                <ion-option value="EU">EU</ion-option>
             </ion-select>
         </ion-item>
         <button ion-button block class="filter-button" (click)="toggleFilters('close')">Filtro Rezultatet</button>
         
     </div>
 
+    <div class="clear-filters">
+        <button ion-button clear icon-left *ngIf="hasFilters()" (click)="clearFilters()">
+            <ion-icon name="close"></ion-icon>
+            Pastro Filtrat
+        </button>
+    </div>
+
     <ion-card class="info-card" *ngFor="let card of filteredCards" (click)="showSingleFor(card)">
-        <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card.id)" 
-        [color]="isBookmark(card.id)? 'primary' : 'light'">
+        <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card._id)" 
+        [color]="isBookmark(card._id)? 'primary' : 'light'">
             <ion-icon name="bookmark"></ion-icon>
         </button>
         <ion-card-content>

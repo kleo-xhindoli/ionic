@@ -19,6 +19,7 @@ export class CreateTicket {
     date: any;
     time: any;
     location: any;
+    service: any;
     minDate: string;
     constructor(public navCtrl: NavController, public navParams: NavParams, public ticketsProvider: TicketsProvider) {
         this.minDate = new Date().toISOString();
@@ -32,7 +33,8 @@ export class CreateTicket {
         let ticket = {
             date: this.date,
             time: this.time,
-            location: this.location
+            location: this.location,
+            service: this.service
         }
         this.ticketsProvider.create(ticket)
         .then(() => {

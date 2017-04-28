@@ -52,6 +52,7 @@ export class InfoCardsProvider {
             // });
             return this.api.get(this.url).then((cards: any) => {
                 this.infoCards = cards;
+                console.log(cards);
                 return cards;
             })
             .catch((err) => {
@@ -89,7 +90,7 @@ export class InfoCardsProvider {
             return this.storage.keys().then((keys) => {
                 keys.forEach((key) => {
                     let el =this.infoCards.find((card) => {
-                        return card.id == key;
+                        return card._id == key;
                     });
                     if(el) this.bookmarks.push(el);
                 });
@@ -111,7 +112,7 @@ export class InfoCardsProvider {
     getDummyCards(){
         return [
             {
-                id: 0,
+                _id: 0,
                 title: 'Card 1',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nulla et metus commodo iaculis. Aliquam sollicitudin laoreet suscipit. Suspendisse sed nisl luctus, sagittis eros sed, hendrerit nibh. Pellentesque egestas finibus sem et hendrerit. Suspendisse convallis faucibus massa. Ut nibh dui, egestas eget cursus at, interdum in nisl. Fusce magna nisi, cursus ac fermentum ut, consequat ac orci.',
                 content: `<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit. Officia dolores, quod dignissimos debitis excepturi quidem nostrum eaque, laboriosam explicabo est consequatur facere? Ratione modi atque, explicabo quisquam labore. Ex, rem?</p>
@@ -133,7 +134,7 @@ export class InfoCardsProvider {
                 subcategory: 'Pasuri te patundshme',
             },
             {
-                id: 1,
+                _id: 1,
                 title: 'Card 2',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nulla et metus commodo iaculis. Aliquam sollicitudin laoreet suscipit. Suspendisse sed nisl luctus, sagittis eros sed, hendrerit nibh. Pellentesque egestas finibus sem et hendrerit. Suspendisse convallis faucibus massa. Ut nibh dui, egestas eget cursus at, interdum in nisl. Fusce magna nisi, cursus ac fermentum ut, consequat ac orci.',
                 content: `<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit. Officia dolores, quod dignissimos debitis excepturi quidem nostrum eaque, laboriosam explicabo est consequatur facere? Ratione modi atque, explicabo quisquam labore. Ex, rem?</p>
@@ -154,7 +155,7 @@ export class InfoCardsProvider {
                 subcategory: 'Pasuri te patundshme',
             },
             {
-                id: 2,
+                _id: 2,
                 title: 'Card 3',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nulla et metus commodo iaculis. Aliquam sollicitudin laoreet suscipit. Suspendisse sed nisl luctus, sagittis eros sed, hendrerit nibh. Pellentesque egestas finibus sem et hendrerit. Suspendisse convallis faucibus massa. Ut nibh dui, egestas eget cursus at, interdum in nisl. Fusce magna nisi, cursus ac fermentum ut, consequat ac orci.',
                 content: `<p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit. Officia dolores, quod dignissimos debitis excepturi quidem nostrum eaque, laboriosam explicabo est consequatur facere? Ratione modi atque, explicabo quisquam labore. Ex, rem?</p>

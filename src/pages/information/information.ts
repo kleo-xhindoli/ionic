@@ -21,14 +21,20 @@ export class Information {
     infoCards: any[];
     filteredCards: any[];
     filters: any;
+    noFiltersState: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public infoProvider: InfoCardsProvider) {
         this.showFilters = false;
         this.closingFilters = false;
         this.infoCards = [];
+        this.noFiltersState = {
+            search: '',
+            category: '',
+            subcategory: ''
+        };
         this.filters = {
             search: '',
-            category: null,
-            subcategory: null
+            category: '',
+            subcategory: ''
         };
     }
 
@@ -105,17 +111,26 @@ export class Information {
 
         })
         .filter((card) => {
-            if(!this.filters.category) return true;
+            if(this.filters.category.length === 0) return true;
             else {
                 return this.filters.category === card.category;
             }
         })
         .filter((card) => {
-            if(!this.filters.subcategory) return true;
+            if(this.filters.subcategory.length === 0) return true;
             else {
                 return this.filters.subcategory === card.subcategory;
             }
         });
+    }
+
+    hasFilters(){
+        return !(JSON.stringify(this.filters) === JSON.stringify(this.noFiltersState));
+    }
+
+    clearFilters() {
+        this.filters = JSON.parse(JSON.stringify(this.noFiltersState));
+        this.applyFilters();
     }
 
 }
