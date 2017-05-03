@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>John Doe</ion-title>
+        <ion-title>Kleo Xhindoli</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -15,11 +15,18 @@
 
 <ion-content padding class="grey-bg" #content>
     <div class="info">
-        <ion-note>Ju jeni lidhur me operatorin John Doe.</ion-note>
+        <ion-note>Ju jeni lidhur me operatorin Kleo Xhindoli.</ion-note>
         <hr>
     </div>
 
-    <ion-card class="chat-bubble">
+     <ion-card class="chat-bubble" [ngClass]="{mine: msg.isMine}" *ngFor="let msg of messages">
+        <ion-card-content>
+            {{msg.message}}
+            <ion-note class="time" [ngClass]="{mine: msg.isMine}">{{ msg.date | date:'HH:mm'}}</ion-note>
+        </ion-card-content>
+    </ion-card>
+
+    <!--<ion-card class="chat-bubble">
         <ion-card-content>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur tenetur non, quidem, dolore porro recusandae earum soluta! Rem incidunt error aliquam a dolor sint quae eveniet architecto, cumque, fugit ullam!
             <ion-note class="time">12:32</ion-note>
@@ -38,7 +45,7 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur tenetur non.
             <ion-note class="time mine">12:32</ion-note>
         </ion-card-content>
-    </ion-card>
+    </ion-card>-->
     
     
 </ion-content>
@@ -48,11 +55,11 @@
         <ion-grid>
             <ion-row>
                 <ion-col col-10>
-                    <ion-input type="text" id="msg-input" placeholder="Mesazhi juaj..."></ion-input>
+                    <ion-input type="text" [(ngModel)]="message" id="msg-input" placeholder="Mesazhi juaj..."></ion-input>
 
                 </ion-col>
                 <ion-col col-2>
-                    <button ion-button icon-only clear class="send-button">
+                    <button ion-button icon-only clear class="send-button" (click)="sendMessage()">
                         <ion-icon name="send"></ion-icon>
                     </button>
                     <!--<a href="#"><ion-icon name="send" class="send-button"></ion-icon></a>-->

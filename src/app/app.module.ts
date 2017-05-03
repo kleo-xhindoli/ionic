@@ -29,6 +29,7 @@ import { TicketsProvider } from '../providers/tickets-provider';
 import { InfoCardsProvider } from '../providers/info-cards-provider';
 import { AuthProvider } from '../providers/auth-provider';
 import { LocalStorage } from '../providers/local-storage';
+import { ChatProvider } from '../providers/chat-provider';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { LocalStorage } from '../providers/local-storage';
     TicketsProvider,
     InfoCardsProvider,
     AuthProvider,
-    LocalStorage
+    LocalStorage,
+    ChatProvider
   ]
 })
 export class AppModule {}

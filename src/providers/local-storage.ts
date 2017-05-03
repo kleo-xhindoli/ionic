@@ -20,7 +20,7 @@ export class LocalStorage {
     }
 
     getKey(key) {
-        localStorage.getItem(key);
+        return localStorage.getItem(key);
     }
 
     setToken(access_token) {
@@ -36,6 +36,20 @@ export class LocalStorage {
         if (this.token)
             return true;
         return false;
+    }
+
+    setUser(username, token ,fullname){
+        this.setToken(token);
+        this.setKey('username', username);
+        this.setKey('fullname', fullname);
+    }
+
+    getUsername(){
+        return this.getKey('username');
+    }
+
+    getFullname(){
+        return this.getKey('fullname');
     }
 
 }
