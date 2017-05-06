@@ -7,12 +7,15 @@
 <ion-header>
 
     <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-buttons end *ngIf="showFilters" (click)="toggleFilters('close')">
             <button ion-button icon-only>
                 <ion-icon name="close"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title>Information</ion-title>
+        <ion-title>Kartelat e Informacionit</ion-title>
     </ion-navbar>
 
 </ion-header>

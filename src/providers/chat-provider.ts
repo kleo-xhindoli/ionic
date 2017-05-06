@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
+import { API } from './api';
 /*
   Generated class for the ChatProvider provider.
 
@@ -12,9 +13,10 @@ import * as io from 'socket.io-client';
 */
 @Injectable()
 export class ChatProvider {
-    private url = 'http://localhost:3000';
+    private url;
     private socket;
-    constructor(public http: Http) {
+    constructor(public http: Http, public api: API) {
+        this.url = this.api.apiUrl;
         console.log('Hello ChatProvider Provider');
     }
 

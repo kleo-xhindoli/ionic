@@ -51,11 +51,17 @@ page-home {
             margin-right: 15px;
             font-weight: 300;
             color: color($colors, dark);
+            font-size: 18px;
         }
     }
 
     ion-icon{
         float: right;
         color: color($colors, dark);
+        font-size: 20px;
+
+        &.icon-md{
+            line-height: 28.8px;
+        }
     }
 }
