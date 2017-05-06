@@ -18,6 +18,7 @@ import { Login } from '../pages/login/login';
 import { Register } from '../pages/register/register';
 import { CallCenter } from '../pages/call-center/call-center';
 import { Chat } from '../pages/chat/chat';
+import { PeoplesVoice } from '../pages/peoples-voice/peoples-voice';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -47,7 +48,8 @@ import { ChatProvider } from '../providers/chat-provider';
     Login,
     Register,
     CallCenter,
-    Chat
+    Chat,
+    PeoplesVoice
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { ChatProvider } from '../providers/chat-provider';
     Login,
     Register,
     CallCenter,
-    Chat
+    Chat,
+    PeoplesVoice
   ],
   providers: [
     StatusBar,

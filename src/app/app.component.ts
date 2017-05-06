@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { Tickets } from '../pages/tickets/tickets';
 import { Information } from '../pages/information/information';
 import { CallCenter } from '../pages/call-center/call-center';
+import { PeoplesVoice } from '../pages/peoples-voice/peoples-voice';
 // import { ListPage } from '../pages/list/list';
 
 @Component({
@@ -24,10 +25,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'E-Tickets', component: Tickets },
-      { title: 'Information', component: Information },
-      { title: 'Call Center', component: CallCenter },
+      { title: 'Faqja Kryesore', component: HomePage },
+      { title: 'Rezervimi i Biletes', component: Tickets },
+      { title: 'Kartelat e Informacionit', component: Information },
+      // { title: 'Call Center', component: CallCenter },
+      { title: 'Zeri i Qytetarit', component: PeoplesVoice },
       // { title: 'List', component: ListPage }
 
     ];

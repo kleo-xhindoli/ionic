@@ -52,4 +52,34 @@
             </ion-card-title>
         </ion-card-content>
     </ion-card>
+
+    <ion-card class="main-card" (click)="goToModule('peoples-voice')">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-bullhorn"></i></div>
+            <div class="cover" [ngStyle]="{'background-image': 'url(http://zib.com.ua/files/articles_photos/127760.jpg)'}"></div>
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="title">
+                    ZERI I QYTETARIT
+                </span>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="main-card" (click)="goToModule('info-desk')">
+        <div class="card-header">
+            <div class="overlay"><i class="fa fa-question-circle"></i></div>
+            <div class="cover" [ngStyle]="{'background-image': 'url(https://msc.ucenter.tamu.edu/wp-content/uploads/sites/2/2016/12/INFO-DESK-add-1.jpg)'}"></div>
+        </div>
+        <ion-card-content class="main-card-content">
+            <ion-card-title class="main-card-title">
+                <span class="title">
+                    INFORMACION
+                </span>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-card-title>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
