@@ -31,7 +31,7 @@ export class HomePage {
                 this.navCtrl.push(PeoplesVoice);
                 break;
             case 'info-desk':
-                window.open('http://google.com', '_system');
+                window.open('http://www.adisa.gov.al/', '_system');
                 break;
             default:
                 return;

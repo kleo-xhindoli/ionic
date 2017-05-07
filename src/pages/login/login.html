@@ -19,26 +19,26 @@
 
 
 <ion-content padding>
-        <div class="logo">
-            <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
-            <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
-        </div>
-        <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text" [(ngModel)]="username"></ion-input>
-        </ion-item>
+    <div class="logo">
+        <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
+        <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
+    </div>
+    <ion-item>
+        <ion-label floating>Username / Email</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
 
-        <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
-        </ion-item>
+    <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
 
-        <p class="error" *ngIf="error">Kredencialet tuaja nuk jane te sakta.</p>
-        
-        <div class="button-wrapper">
-            <div class="button" color="primary">
-                <button ion-button round (click)="login()">LOG IN</button>
-            </div>
+    <p class="error" *ngIf="error">Kredencialet tuaja nuk jane te sakta.</p>
+    
+    <div class="button-wrapper">
+        <div class="button" color="primary">
+            <button ion-button round (click)="login()">LIDHUNI</button>
         </div>
-        <p class="register-link">Nuk keni llogari? <a (click)="registerPage()">Regjistrohuni ketu</a>.</p>
+    </div>
+    <p class="register-link">Nuk keni llogari? <a (click)="registerPage()">Regjistrohuni ketu</a>.</p>
 </ion-content>

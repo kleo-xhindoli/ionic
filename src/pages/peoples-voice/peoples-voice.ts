@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chat } from '../chat/chat';
+import { GeneralFeedback } from '../general-feedback/general-feedback';
 
 /**
  * Generated class for the PeoplesVoice page.
@@ -26,6 +27,9 @@ export class PeoplesVoice {
         switch(page){
             case 'chat':
                 this.navCtrl.push(Chat);
+                break;
+             case 'feedback':
+                this.navCtrl.push(GeneralFeedback);
                 break;
         }
     }
