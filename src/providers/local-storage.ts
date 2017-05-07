@@ -38,10 +38,11 @@ export class LocalStorage {
         return false;
     }
 
-    setUser(username, token ,fullname){
+    setUser(username, token ,fullname, id){
         this.setToken(token);
         this.setKey('username', username);
         this.setKey('fullname', fullname);
+        this.setKey('userid', id);
     }
 
     getUsername(){
@@ -50,6 +51,10 @@ export class LocalStorage {
 
     getFullname(){
         return this.getKey('fullname');
+    }
+
+    getUserId(){
+        return this.getKey('userid');
     }
 
 }

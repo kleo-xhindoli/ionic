@@ -37,7 +37,7 @@ export class AuthProvider {
         //     })
         // });
         return this.api.post(this.loginUrl, {username: username, password: password}).then((data: any) => {
-            this.ls.setUser(data.username, data.token, data.fullname);
+            this.ls.setUser(data.username, data.token, data.fullname, data.id);
         })
     }
 

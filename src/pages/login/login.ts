@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, LoadingController } from 'ionic-angular';
 
 import { Register } from '../register/register';
 import { HomePage } from '../home/home';
@@ -28,7 +28,8 @@ export class Login {
         public auth: AuthProvider, 
         public ls: LocalStorage, 
         public viewCtrl: ViewController,
-        public modalCtrl: ModalController
+        public modalCtrl: ModalController,
+        public loadingCtrl: LoadingController
     ) {
         this.error = false
     }
@@ -40,10 +41,15 @@ export class Login {
     }
 
     login() {
+        let loader = this.loadingCtrl.create({
+            content: "Ju lutem prisni...",
+        });
         this.auth.logIn(this.username, this.password).then((result) => {
+            loader.dismiss();
             this.viewCtrl.dismiss();
         })
         .catch((err) => {
+            loader.dismiss();
             this.error = true;
             console.log(err);
         })

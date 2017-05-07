@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // import { Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { API } from './api'
+import { LocalStorage } from './local-storage'
 
 /*
   Generated class for the TicketsProvider provider.
@@ -15,7 +16,7 @@ export class TicketsProvider {
     data: any[];
     url = '/tickets';
 
-    constructor(public api: API) {
+    constructor(public api: API, public ls: LocalStorage) {
     }
 
     getTickets(){
@@ -54,6 +55,9 @@ export class TicketsProvider {
     create(ticket) {
         if (!ticket.status){
             ticket.status = "Ne pritje per aprovim";
+        }
+        if (!ticket.createdBy){
+            ticket.createdBy = this.ls.getUserId();
         }
         // let body = JSON.stringify(ticket);
         // let headers = new Headers({ 'Content-Type': 'application/json' });
