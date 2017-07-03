@@ -23,7 +23,7 @@ export class TicketsProvider {
         if(this.data){
             return Promise.resolve(this.data);
         }
-        else {            
+        else {
             // return new Promise(resolve => {
             //     this.http.get(this.url)
             //     .map(res => res.json())
@@ -54,7 +54,7 @@ export class TicketsProvider {
 
     create(ticket) {
         if (!ticket.status){
-            ticket.status = "Ne pritje per aprovim";
+            ticket.status = "Aprovuar";
         }
         if (!ticket.createdBy){
             ticket.createdBy = this.ls.getUserId();
@@ -85,7 +85,7 @@ export class TicketsProvider {
 
     cancel(id){
         let ticket = this.getById(id);
-        ticket.status = 'Ne pritje per anullim';
+        ticket.status = 'Anulluar';
 
         // let body = JSON.stringify(ticket);
         // let headers = new Headers({ 'Content-Type': 'application/json' });

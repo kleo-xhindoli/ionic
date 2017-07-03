@@ -10,6 +10,7 @@ import { Tickets } from '../pages/tickets/tickets';
 import { Ticket } from '../pages/tickets/ticket/ticket';
 import { PopoverPage } from '../pages/tickets/ticket/pop-over';
 import { CreateTicket } from '../pages/create-ticket/create-ticket';
+import { DateTimeModal } from '../pages/create-ticket/datetime-modal/datetime-modal';
 import { Information } from '../pages/information/information';
 import { InfoTabs } from '../pages/info-tabs/info-tabs';
 import { InfoSingle } from '../pages/info-single/info-single';
@@ -41,6 +42,7 @@ import { ChatProvider } from '../providers/chat-provider';
     Ticket,
     PopoverPage,
     CreateTicket,
+    DateTimeModal,
     Information,
     InfoTabs,
     InfoSingle,
@@ -66,6 +68,7 @@ import { ChatProvider } from '../providers/chat-provider';
     Ticket,
     PopoverPage,
     CreateTicket,
+    DateTimeModal,
     Information,
     InfoTabs,
     InfoSingle,

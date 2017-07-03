@@ -12,4 +12,10 @@ page-create-ticket {
             color: #999;
         }
     }
+
+    .error{
+        text-align: center;
+        color: color($colors, danger);
+        font-weight: bold;
+    }
 }

@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Zgjidhni Kohen e Rezervimit</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="datetime-modal">
+    <ion-item>
+        <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Data e rezervimit</ion-label>
+        <ion-datetime
+            displayFormat="DD MMMM YYYY"
+            monthNames="Janar, Shkurt, Mars, Prill, Maj, Qershor, Korrik, Gusht, Shtator, Tetor, Nentor, Dhjetor"
+            [min]="minDate"
+            [(ngModel)]="date"
+            (ionChange)="recalculate(date)"
+            >
+        </ion-datetime>
+    </ion-item>
+    <ion-scroll scrollX="true" class="timeline">
+        <div class="section" *ngFor="let interval of intervals; let i = index">
+            {{interval.text}}
+            <div class="bar" [ngClass]="{filled: interval.active, mine: interval.isMine}"></div>
+            <div class="btn" [ngStyle]="{'visibility': !interval.canChoose ? 'hidden' : 'visible'}">
+                <button ion-button outline small color="secondary" (click)="choose(interval, i)">Zgjidh</button>
+            </div>
+        </div>
+    </ion-scroll>
+    <button ion-button block class="send-feedback-btn" (click)="dismiss()">
+        Konfirmo
+    </button>
+
+
+</ion-content>

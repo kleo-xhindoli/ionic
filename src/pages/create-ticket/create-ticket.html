@@ -16,26 +16,15 @@
 
 
 <ion-content padding>
-    <ion-item>
-        <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Data e rezervimit</ion-label>
-        <ion-datetime 
-            displayFormat="DD MMMM YYYY"
-            monthNames="Janar, Shkurt, Mars, Prill, Maj, Qershor, Korrik, Gusht, Shtator, Tetor, Nentor, Dhjetor"
-            [min]="minDate"
-            [(ngModel)]="date"> 
-        </ion-datetime>
-    </ion-item>
-    <ion-item>
+
+    <!--<ion-item>
         <ion-label class="input-label"><ion-icon ios="ios-time-outline" md="md-time" class="label-icon"></ion-icon>Ora e rezervimit</ion-label>
         <ion-datetime displayFormat="HH:mm" min="08:00" max="16:59" [(ngModel)]="time">
         </ion-datetime>
-    </ion-item>
+    </ion-item>-->
     <ion-item>
         <ion-label class="input-label"><ion-icon name="pin" class="label-icon"></ion-icon>Zyrat</ion-label>
         <ion-select [(ngModel)]="location">
-            <!--<ion-option value="Rr. e Barrikadave, Tirane">Rr. e Barrikadave, Tirane</ion-option>-->
-            <!--<ion-option value="Blv. Zogu I, Tirane">Blv. Zogu I, Tirane</ion-option>-->
-            <!--<ion-option value="Sheshi Nene Tereza, Tirane">Sheshi Nene Tereza, Tirane</ion-option>-->
             <ion-option value="Blv. Zhan d'Ark, Tirane">Blv. Zhan d'Ark, Tirane</ion-option>
             <ion-option value="Rr: “Jordan Misja” Tirane, Tirane">Rr: “Jordan Misja” Tirane, Tirane</ion-option>
             <ion-option value="Pallati i Kulturës i Kavajës, Kavaje">Pallati i Kulturës i Kavajës, Kavaje</ion-option>
@@ -45,11 +34,29 @@
     <ion-item>
         <ion-label class="input-label"><ion-icon name="help-buoy" class="label-icon"></ion-icon>Sherbimi</ion-label>
         <ion-select [(ngModel)]="service">
-            <ion-option value="Hipoteka">Hipoteka</ion-option>
-            <ion-option value="Legjistlacioni">Legjistlacioni</ion-option>
-            <ion-option value="Legjistlacioni">Taksat/Tatimet</ion-option>
-            <ion-option value="Arsimi">Arsimi</ion-option>
+            <ion-option value="Vertetime">Vertetime</ion-option>
+            <ion-option value="Aplikime te thjeshta">Aplikime te thjeshta</ion-option>
+            <ion-option value="Kontrata">Kontrata</ion-option>
         </ion-select>
     </ion-item>
+    <ion-item>
+        <ion-label class="input-label"><ion-icon name="options" class="label-icon"></ion-icon>Numri i {{ plural(service) }}</ion-label>
+        <ion-input [disabled]="!service" type="number" [(ngModel)]="nbServices"></ion-input>
+    </ion-item>
+    <!--<ion-item>
+        <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Koha e rezervimit</ion-label>
+        <ion-datetime
+            [disabled]="!location || !service || !nbServices"
+            displayFormat="DD MMMM YYYY"
+            monthNames="Janar, Shkurt, Mars, Prill, Maj, Qershor, Korrik, Gusht, Shtator, Tetor, Nentor, Dhjetor"
+            [min]="minDate"
+            [(ngModel)]="date">
+        </ion-datetime>
+    </ion-item>-->
+    <ion-item (click)="openDateTimePopup($event)">
+        <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Koha e rezervimit</ion-label>
+        <ion-input [disabled]="true" [(ngModel)]="readableDate"></ion-input>
+    </ion-item>
     <button ion-button block class="block-button" (click)="createTicket()">Rezervo</button>
+    <p class="error" *ngIf="error">{{errorMessage}}</p>
 </ion-content>
