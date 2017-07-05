@@ -30,16 +30,21 @@
             <ion-label class="input-label">Kategoria</ion-label>
             <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.category">
                 <ion-option value="">Te gjitha</ion-option>
-                <ion-option value="Legistlation">Legistlation</ion-option>
-                <ion-option value="Countries">Countries</ion-option>
+                <ion-option value="Taksat/Tatimet">Taksat/Tatimet</ion-option>
+                <ion-option value="Arsimi">Arsimi</ion-option>
+                <ion-option value="Dokumentacion">Dokumentacion</ion-option>
+                <ion-option value="Mireqenia Sociale">Mireqenia Sociale</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label class="input-label">Nenkategoria</ion-label>
             <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.subcategory">
                 <ion-option value="">Te gjitha</ion-option>
-                <ion-option value="Healthcare">Healthcare</ion-option>
-                <ion-option value="EU">EU</ion-option>
+                <ion-option value="Sigurimet Shoqerore">Sigurimet Shoqerore</ion-option>
+                <ion-option value="Legalizimi">Legalizimi</ion-option>
+                <ion-option value="Dokumente teknik arkivore">Dokumente teknik arkivore</ion-option>
+                <ion-option value="Arsimi i larte">Arsimi i larte</ion-option>
+                <ion-option value="Mireqenia Sociale">Mireqenia Sociale</ion-option>
             </ion-select>
         </ion-item>
         <button ion-button block class="filter-button" (click)="toggleFilters('close')">Filtro Rezultatet</button>
