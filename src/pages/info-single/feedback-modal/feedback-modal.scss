@@ -16,3 +16,10 @@
 
     }
 }
+
+.red-toast {
+    .toast-wrapper {
+        background: color($colors, danger);
+
+    }
+}

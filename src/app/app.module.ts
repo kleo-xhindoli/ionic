@@ -33,6 +33,7 @@ import { InfoCardsProvider } from '../providers/info-cards-provider';
 import { AuthProvider } from '../providers/auth-provider';
 import { LocalStorage } from '../providers/local-storage';
 import { ChatProvider } from '../providers/chat-provider';
+import { FeedbackProvider } from '../providers/feedback-provider';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ChatProvider } from '../providers/chat-provider';
     InfoCardsProvider,
     AuthProvider,
     LocalStorage,
-    ChatProvider
+    ChatProvider,
+    FeedbackProvider
   ]
 })
 export class AppModule {}

@@ -23,14 +23,14 @@
         <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
         <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
     </div>
-    <ion-item>
+    <!-- <ion-item>
         <ion-label floating>E-mail</ion-label>
         <ion-input type="email"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="username"></ion-input>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="username"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -45,17 +45,17 @@
 
     <ion-item>
         <ion-label floating>Datelindja</ion-label>
-        <ion-datetime pickerFormat="DD/MM/YYYY"></ion-datetime>
+        <ion-datetime pickerFormat="DD/MM/YYYY" [(ngModel)]="birthday"></ion-datetime>
     </ion-item>
     
     <ion-item>
         <ion-label floating>ID e kartes</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="cardId"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Nr. Telefoni</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="tel"></ion-input>
     </ion-item>
 
     <ion-item>

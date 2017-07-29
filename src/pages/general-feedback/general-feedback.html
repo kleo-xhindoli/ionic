@@ -57,11 +57,10 @@
     </ion-item>
 
     <p><strong>Si mund ta permiresojme me tej kete aplikacion?</strong></p>
-    <ion-input type="text" placeholder="Sugjerime" class="feedback-input"></ion-input>
+    <ion-input type="text" [(ngModel)]="suggestions" placeholder="Sugjerime" class="feedback-input"></ion-input>
+
     <p><strong>Komente te tjera</strong></p>
-
-
-    <ion-input type="text" placeholder="Komente" class="feedback-input"></ion-input>
+    <ion-input type="text" placeholder="Komente" [(ngModel)]="comments" class="feedback-input"></ion-input>
     <button ion-button block class="send-feedback-btn" (click)="thankAndDismiss()">
         Dergo Feedback
     </button>

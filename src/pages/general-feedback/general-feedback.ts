@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { FeedbackProvider } from '../../providers/feedback-provider';
 
 /**
  * Generated class for the GeneralFeedback page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 export class GeneralFeedback {
     rating: Number;
     didGetService: Boolean;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+    difficulty: String;
+    suggestions: String;
+    comments: String;
+    constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public fbProvider: FeedbackProvider) {
         this.rating = 0;
     }
 
@@ -42,14 +46,36 @@ export class GeneralFeedback {
     }
 
     thankAndDismiss() {
-        let toast = this.toastCtrl.create({
-            message: 'Faleminderit per feedback-un tuaj.',
-            duration: 3000,
-            position: 'bottom',
-            cssClass: 'green-toast'
-        });
-        toast.present();
-        this.navCtrl.pop();
+        let feedback = {
+            feedbackFor: 'app',
+            rating: this.rating,
+            wasHelpful: this.didGetService,
+            difficulty: this.difficulty,
+            suggestions: this.suggestions,
+            comments: this.comments
+        }
+        console.log(feedback);
+        this.fbProvider.send(feedback)
+        .then ((res) => {
+            let toast = this.toastCtrl.create({
+                message: 'Faleminderit per feedback-un tuaj.',
+                duration: 3000,
+                position: 'bottom',
+                cssClass: 'green-toast'
+            });
+            toast.present();
+            this.navCtrl.pop();
+        })
+        .catch((err) => {
+            let toast = this.toastCtrl.create({
+                message: 'Feedback-u juaj nuk mund te dergohej per momentin.',
+                duration: 3000,
+                position: 'bottom',
+                cssClass: 'red-toast'
+            });
+            toast.present();
+            this.navCtrl.pop();
+        })
     }
 
 }

@@ -20,6 +20,9 @@ export class Register {
     firstname: string;
     lastname: string;
     confirm: string;
+    birthday: string;
+    tel: string;
+    cardId: string;
     error: boolean;
     errorStr: string;
     constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public auth: AuthProvider) {
@@ -41,7 +44,15 @@ export class Register {
             this.error = true;
         }
         else {
-            this.auth.register(this.username, this.password, this.firstname, this.lastname).then(() => {
+            this.auth.register(
+                this.username, 
+                this.password, 
+                this.firstname, 
+                this.lastname,
+                this.tel,
+                this.cardId,
+                this.birthday
+            ).then(() => {
                 this.dismiss()
             })
             .catch(() => {
