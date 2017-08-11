@@ -14,6 +14,96 @@
 
 
 <ion-content padding>
+    <div class="card-info">
+        <div class="info-row">
+            <h2 style="text-align: center;">{{card.code}}</h2>
+        </div>
+        <div class="info-row">
+            <h4>Kush perfiton nga ky sherbim?</h4>
+            <div>{{card.profitable}}</div>
+        </div>
+        <div class="docs info-row">
+            <h4>Dokumentat e nevojshme</h4>
+            <ion-grid class="table">
+                <ion-row class="table-header">
+                    <ion-col col-1>Nr</ion-col>
+                    <ion-col col-4>Lloji</ion-col>
+                    <ion-col col-4>Nga leshohet</ion-col>
+                    <ion-col col-3>Afati i vlefshmerise</ion-col>
+                </ion-row>
+
+                <ion-row *ngFor="let doc of card.documents">
+                    <ion-col col-1>{{doc.number}}</ion-col>
+                    <ion-col col-4>{{doc.docType}}</ion-col>
+                    <ion-col col-4>{{doc.institution}}</ion-col>
+                    <ion-col col-3>{{doc.validPeriod}}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div class="info-row" *ngIf="location">
+            <h4>Ku mund te aplikoj?</h4>
+            <div><span><strong>Zyra: </strong></span>{{location.office}}</div>
+            <div><span><strong>Qyteti: </strong></span>{{location.city}}</div>
+            <div><span><strong>Adresa: </strong></span>{{location.address}}</div>
+            <div><span><strong>Orari: </strong></span>{{location.time}}</div>
+        </div>
+        <div class="info-row">
+            <h4>A eshte online?</h4>
+            <div class="levels" *ngIf="card.isOnline">
+                <div *ngIf="card.isOnline.lvl1">Niveli 1 &#10004;</div>
+                <div *ngIf="card.isOnline.lvl2">Niveli 2 &#10004;</div>
+                <div *ngIf="card.isOnline.lvl3">Niveli 3 &#10004;</div>
+                <div *ngIf="card.isOnline.lvl4">Niveli 4 &#10004;</div>
+            </div>
+            <div class="levels" *ngIf="!card.isOnline || (!card.isOnline.lvl1 && !card.isOnline.lvl2 && !card.isOnline.lvl3 && !card.isOnline.lvl4)">
+                Ky sherbim nuk ofrohet online.
+            </div>
+        </div>
+        <div class="info-row">
+            <h4>Sa eshte tarifa per marrjen e sherbimit?</h4>
+            <div>{{card.fee}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Sa kohe nevojitet per te marre sherbimin?</h4>
+            <div>{{card.serviceDuration}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Cfare perfitoj?</h4>
+            <div>{{card.profits}}</div>
+        </div>
+        <div class="info-row">
+            <h4>C'afat vlefshmerie ka?</h4>
+            <div>{{card.serviceValidDuration}}</div>
+        </div>
+        <div class="info-row" *ngIf="card.location">
+            <h4>A eshte online?</h4>
+            <div class="levels">
+                <div *ngIf="card.location.sportel">Ne sportele &#10004;</div>
+                <div *ngIf="!card.location.sportel">Ne sportele &#10008;</div>
+                <div *ngIf="card.location.postOffice">Ne poste &#10004;</div>
+                <div *ngIf="!card.location.postOffice">Ne poste &#10008;</div>
+                <div *ngIf="card.location.internet">Me internet &#10004;</div>
+                <div *ngIf="!card.location.internet">Me internet &#10008;</div>
+                <div *ngIf="card.location.email">Me e-mail &#10004;</div>
+                <div *ngIf="!card.location.email">Me e-mail &#10008;</div>
+            </div>
+        </div>
+        <div class="info-row">
+            <h4>Cili është institucioni përgjegjës?</h4>
+            <div>{{card.responsibleInstitution}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Ku mund të gjej informacion për këtë shërbim?</h4>
+            <div>{{card.contact}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Cila është baza ligjore e këtij shërbimi?</h4>
+            <div>{{card.legalInfo}}</div>
+        </div>
+    </div>
+
+    <hr>
+    
     <div class="card-content" [innerHTML]="card.content">
     </div>
     <hr>

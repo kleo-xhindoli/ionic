@@ -13,13 +13,16 @@ import { FeedbackModal } from './feedback-modal/feedback-modal';
     templateUrl: 'info-single.html',
 })
 export class InfoSingle {
-    card: {};
+    card: any;
+    location: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
         this.card = {};
     }
 
     ionViewDidLoad() {
         this.card = this.navParams.data;
+        this.location = this.card.applyLocation;
+        console.log(location);
     }
 
     showFeedbackModal() {

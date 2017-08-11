@@ -2,4 +2,40 @@ page-info-single {
     .actions {
         margin-top: 25px;
     }
+
+    .info-row {
+        margin-top: 20px;
+    }
+
+    .docs {
+
+        .table {
+            font-size: 0.8em;
+            border: 1px solid black;
+            border-radius: 3px;
+            text-align: center;
+            margin: 10px 0;
+            ion-row {
+                border-top: 1px solid black;
+            }
+
+            ion-row:nth-child(1) {
+                border-top: none;
+            }
+
+            ion-col {
+                border-right: 1px solid black;
+            }
+
+            ion-col:last-child {
+                border: none;
+            }
+
+            .table-header {
+                font-weight: bold;
+                
+            }
+        }
+
+    }
 }

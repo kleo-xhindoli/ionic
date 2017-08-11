@@ -34,6 +34,16 @@
                     </ion-col>
                 </ion-row>
             </div>
+            <div class="card-element">
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-icon ios="ios-barcode-outline" md="md-barcode" class="card-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col class="element-text">
+                        <span>{{ticketitem.ticketCode}}</span>
+                    </ion-col>
+                </ion-row>
+            </div>
         </ion-card-content>
         <div class="card-footer" padding [ngStyle]="{'background-color': getStatusColor(ticketitem.status)}">
             <div class="card-element no-margin">
