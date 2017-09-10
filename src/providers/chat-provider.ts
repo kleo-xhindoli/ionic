@@ -17,7 +17,6 @@ export class ChatProvider {
     private socket;
     constructor(public http: Http, public api: API) {
         this.url = this.api.apiUrl;
-        console.log('Hello ChatProvider Provider');
     }
 
     sendMessage(data){

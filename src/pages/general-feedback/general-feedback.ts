@@ -24,7 +24,6 @@ export class GeneralFeedback {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad GeneralFeedback');
     }
 
     getStarIconForRating(rating){
@@ -54,7 +53,6 @@ export class GeneralFeedback {
             suggestions: this.suggestions,
             comments: this.comments
         }
-        console.log(feedback);
         this.fbProvider.send(feedback)
         .then ((res) => {
             let toast = this.toastCtrl.create({

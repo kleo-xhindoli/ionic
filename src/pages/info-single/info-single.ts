@@ -22,7 +22,6 @@ export class InfoSingle {
     ionViewDidLoad() {
         this.card = this.navParams.data;
         this.location = this.card.applyLocation;
-        console.log(location);
     }
 
     showFeedbackModal() {

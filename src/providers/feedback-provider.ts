@@ -13,7 +13,6 @@ import { API } from './api'
 export class FeedbackProvider {
 
     constructor(public http: Http, public api: API) {
-        console.log('Hello FeedbackProvider Provider');
     }
 
     send(feedback) {

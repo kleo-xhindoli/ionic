@@ -14,9 +14,8 @@ import { LocalStorage } from './local-storage'
 export class API {
 
     apiUrl = 'http://localhost:3000';
-    // apiUrl = 'http://13.69.76.128:3000';
+    // apiUrl = 'http://52.233.197.18:3000';
     constructor(public http: Http, public ls: LocalStorage) {
-        console.log('Hello API Provider');
     }
 
     get(route){

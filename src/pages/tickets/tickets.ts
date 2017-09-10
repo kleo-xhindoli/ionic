@@ -41,12 +41,10 @@ export class Tickets {
     }
 
     ionViewDidEnter() {
-        console.log('did enter');
         if (!this.ls.isLogged()){
             let contactModal = this.modalCtrl.create(Login);
             contactModal.onDidDismiss(() => {
                 this.ticketsProvider.getTickets().then((tickets: any) => {
-                    console.log('got tickets');
                     this.dates = [];
                     this.tickets = tickets;
 

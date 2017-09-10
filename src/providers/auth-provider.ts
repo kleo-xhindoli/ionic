@@ -17,7 +17,6 @@ export class AuthProvider {
     loginUrl = '/users/login'
     registerUrl = '/users/register'
     constructor(public http: Http, public ls: LocalStorage, public api: API) {
-        console.log('Hello AuthProvider Provider');
     }
 
     logIn(username, password) {

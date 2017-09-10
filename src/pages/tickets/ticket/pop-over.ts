@@ -26,14 +26,12 @@ export class PopoverPage {
                 {
                     text: 'Jo',
                     handler: () => {
-                        console.log('Disagree clicked');
                         this.viewCtrl.dismiss();
                     }
                 },
                 {
                     text: 'Po',
                     handler: () => {
-                        console.log('Agree clicked');
                         this.ticketsProvider.cancel(this.navParams.get('ticketitem')._id);
                         this.viewCtrl.dismiss();
                     }

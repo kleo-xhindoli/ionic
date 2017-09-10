@@ -37,7 +37,6 @@ export class Chat {
     }
 
     ionViewDidEnter() {
-        console.log('did enter');
         if(!this.ls.isLogged()){
             let contactModal = this.modalCtrl.create(Login);
             contactModal.present();

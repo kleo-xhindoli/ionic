@@ -20,7 +20,6 @@ export class CallCenter {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad CallCenter');
     }
 
     callAdisa(){

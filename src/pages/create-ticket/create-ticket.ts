@@ -34,7 +34,6 @@ export class CreateTicket {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad CreateTicket');
     }
 
     createTicket(){

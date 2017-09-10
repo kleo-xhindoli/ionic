@@ -12,7 +12,6 @@ import 'rxjs/add/operator/map';
 export class LocalStorage {
     token: string;
     constructor(public http: Http) {
-        console.log('Hello LocalStorage Provider');
     }
 
     setKey(key, val) {

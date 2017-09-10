@@ -20,7 +20,6 @@ export class PeoplesVoice {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad PeoplesVoice');
     }
 
     goToPage(page){

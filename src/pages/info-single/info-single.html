@@ -26,17 +26,15 @@
             <h4>Dokumentat e nevojshme</h4>
             <ion-grid class="table">
                 <ion-row class="table-header">
-                    <ion-col col-1>Nr</ion-col>
-                    <ion-col col-4>Lloji</ion-col>
+                    <ion-col col-3>Lloji</ion-col>
                     <ion-col col-4>Nga leshohet</ion-col>
-                    <ion-col col-3>Afati i vlefshmerise</ion-col>
+                    <ion-col col-5>Dokumenti</ion-col>
                 </ion-row>
 
                 <ion-row *ngFor="let doc of card.documents">
-                    <ion-col col-1>{{doc.number}}</ion-col>
-                    <ion-col col-4>{{doc.docType}}</ion-col>
+                    <ion-col col-3>{{doc.docType}}</ion-col>
                     <ion-col col-4>{{doc.institution}}</ion-col>
-                    <ion-col col-3>{{doc.validPeriod}}</ion-col>
+                    <ion-col col-5>{{doc.description}}</ion-col>
                 </ion-row>
             </ion-grid>
         </div>
@@ -59,9 +57,11 @@
                 Ky sherbim nuk ofrohet online.
             </div>
         </div>
-        <div class="info-row">
+        <div class="info-row" *ngIf="location">
             <h4>Sa eshte tarifa per marrjen e sherbimit?</h4>
-            <div>{{card.fee}}</div>
+            <div><span><strong>Tarifa Baze: </strong></span>{{card.fee.base}}</div>
+            <div><span><strong>Tarifa Shtese: </strong></span>{{card.fee.extra}}</div>
+            <div><span><strong>Metoda e pageses: </strong></span>{{card.fee.paymentMethod}}</div>
         </div>
         <div class="info-row">
             <h4>Sa kohe nevojitet per te marre sherbimin?</h4>
@@ -76,27 +76,19 @@
             <div>{{card.serviceValidDuration}}</div>
         </div>
         <div class="info-row" *ngIf="card.location">
-            <h4>A eshte online?</h4>
-            <div class="levels">
-                <div *ngIf="card.location.sportel">Ne sportele &#10004;</div>
-                <div *ngIf="!card.location.sportel">Ne sportele &#10008;</div>
-                <div *ngIf="card.location.postOffice">Ne poste &#10004;</div>
-                <div *ngIf="!card.location.postOffice">Ne poste &#10008;</div>
-                <div *ngIf="card.location.internet">Me internet &#10004;</div>
-                <div *ngIf="!card.location.internet">Me internet &#10008;</div>
-                <div *ngIf="card.location.email">Me e-mail &#10004;</div>
-                <div *ngIf="!card.location.email">Me e-mail &#10008;</div>
-            </div>
+            <h4>Ku e marr?</h4>
+            <div>{{card.location}}</div>
         </div>
         <div class="info-row">
             <h4>Cili është institucioni përgjegjës?</h4>
             <div>{{card.responsibleInstitution}}</div>
         </div>
-        <div class="info-row">
+        <div class="info-row" *ngIf="card.contact">
             <h4>Ku mund të gjej informacion për këtë shërbim?</h4>
-            <div>{{card.contact}}</div>
+            <div><span><strong>Kontakto ne: </strong></span>{{card.contact.contactInfo}}</div>
+            <div><span><strong>Oraret e hapura: </strong></span>{{card.contact.availableHours}}</div>
         </div>
-        <div class="info-row">
+        <div class="info-row" *ngIf="card.legalInfo">
             <h4>Cila është baza ligjore e këtij shërbimi?</h4>
             <div>{{card.legalInfo}}</div>
         </div>
