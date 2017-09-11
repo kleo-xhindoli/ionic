@@ -1,44 +1,31 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Ionic App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
+    <title>tittle</title>
+    <script>
+        window.location = './main.html';
+    </script>
+    <style>
+        .logo{
+            width: 50%;
+            margin: auto;
 
-  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4e8ef7">
- 
-  <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
+        }
+        .main-logo{
+            width: 90%;
+            margin-top: 100px;
+        }
 
-  <!-- un-comment this code to enable service worker
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.log('Error', err));
-    }
-  </script>-->
+        .title {
+            width: 90%;
+        }
+    </style>
+    <body>
+        <div class="logo">
+            <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
+            <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
+        </div>
+    </body>
 
-  <link href="build/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!--<link rel="stylesheet" href="assets/ionicons/css/ionicons.min.css">-->
-  <link rel="stylesheet" href="assets/animate/animate.min.css">
-
-</head>
-<body>
-
-  <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
-
-  <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
-
-  <!-- The bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
-
-</body>
 </html>

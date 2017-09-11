@@ -40,15 +40,15 @@ export class AuthProvider {
         })
     }
 
-    register(user, pass, firstname, lastname, tel, cardId, birthday){
+    register(user, pass, firstname, lastname, tel, cardId){
         let userObj = {
             username: user, 
             password: pass, 
             firstname: firstname, 
             lastname: lastname, 
             tel: tel, 
-            cardId: cardId, 
-            birthday: birthday
+            cardId: cardId
+            // birthday: birthday
         };
         // return new Promise((resolve, reject) => {
         //     this.http.post(this.registerUrl, userObj)

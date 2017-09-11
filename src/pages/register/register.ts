@@ -20,7 +20,7 @@ export class Register {
     firstname: string;
     lastname: string;
     confirm: string;
-    birthday: string;
+    // birthday: string;
     tel: string;
     cardId: string;
     error: boolean;
@@ -50,8 +50,8 @@ export class Register {
                 this.firstname, 
                 this.lastname,
                 this.tel,
-                this.cardId,
-                this.birthday
+                this.cardId
+                // this.birthday
             ).then(() => {
                 this.dismiss()
             })
