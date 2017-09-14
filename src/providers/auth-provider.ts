@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+// import { Headers, RequestOptions } from '@angular/http';
+// import {Observable} from 'rxjs/Rx';
 import { LocalStorage } from './local-storage'
 import { API } from './api'
 

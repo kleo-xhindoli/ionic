@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { Tickets } from '../pages/tickets/tickets';
 import { Information } from '../pages/information/information';
-import { CallCenter } from '../pages/call-center/call-center';
+// import { CallCenter } from '../pages/call-center/call-center';
 import { PeoplesVoice } from '../pages/peoples-voice/peoples-voice';
 // import { ListPage } from '../pages/list/list';
 

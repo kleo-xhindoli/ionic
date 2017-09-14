@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
-import { Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+// import { Headers, RequestOptions } from '@angular/http';
+// import {Observable} from 'rxjs/Rx';
 
 import { API } from './api';
 

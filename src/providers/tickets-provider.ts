@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // import { Http } from '@angular/http';
 // import { Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+// import {Observable} from 'rxjs/Rx';
 import { API } from './api'
 import { LocalStorage } from './local-storage'
 
