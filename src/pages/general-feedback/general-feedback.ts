@@ -56,7 +56,7 @@ export class GeneralFeedback {
         this.fbProvider.send(feedback)
         .then ((res) => {
             let toast = this.toastCtrl.create({
-                message: 'Faleminderit per feedback-un tuaj.',
+                message: 'Faleminderit per opinionin tuaj.',
                 duration: 3000,
                 position: 'bottom',
                 cssClass: 'green-toast'

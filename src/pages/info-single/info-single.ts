@@ -15,6 +15,7 @@ import { FeedbackModal } from './feedback-modal/feedback-modal';
 export class InfoSingle {
     card: any;
     location: any;
+    uniqueCategories: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
         this.card = {};
     }
@@ -22,10 +23,28 @@ export class InfoSingle {
     ionViewDidLoad() {
         this.card = this.navParams.data;
         this.location = this.card.applyLocation;
+        this.uniqueCategories = this.getUniqueDocCategories(this.card.documents);
     }
 
     showFeedbackModal() {
         this.navCtrl.push(FeedbackModal);
+    }
+
+    getUniqueDocCategories(docs) {
+        let allTypes = docs.map(d => d.docType);
+        let unique = [];
+        allTypes.forEach(type => {
+            if (unique.indexOf(type) === -1) {
+                unique.push(type);
+            }
+        });
+        return unique;
+    }
+
+    getFilteredDocs(cat) {
+        return this.card.documents.filter((doc) => {
+            return doc.docType === cat;
+        })
     }
 
 }

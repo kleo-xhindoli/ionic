@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chat } from '../chat/chat';
 import { GeneralFeedback } from '../general-feedback/general-feedback';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the PeoplesVoice page.
@@ -30,7 +31,14 @@ export class PeoplesVoice {
              case 'feedback':
                 this.navCtrl.push(GeneralFeedback);
                 break;
+            case 'home':
+                this.navCtrl.push(HomePage);
+                break;
         }
+    }
+
+    hasPreviousState() {
+        return this.navCtrl.getPrevious()
     }
 
 }

@@ -27,16 +27,14 @@
     <div class="filters animated slideInUp" padding *ngIf="showFilters" [ngClass]="{'slideOutDown': closingFilters}">
         <!--<ion-icon name="close" class="close-filters" (click)="toggleFilters('close')"></ion-icon>-->
         <ion-item>
-            <ion-label class="input-label">Kategoria</ion-label>
-            <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.category">
+            <ion-label class="input-label">Institucioni</ion-label>
+            <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.responsibleInstitution">
                 <ion-option value="">Te gjitha</ion-option>
-                <ion-option value="Taksat/Tatimet">Taksat/Tatimet</ion-option>
-                <ion-option value="Arsimi">Arsimi</ion-option>
-                <ion-option value="Dokumentacion">Dokumentacion</ion-option>
-                <ion-option value="Mireqenia Sociale">Mireqenia Sociale</ion-option>
+                <ion-option *ngFor="let institution of uniqueInstitutions" [value]="institution">{{institution}}</ion-option>
+                
             </ion-select>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
             <ion-label class="input-label">Nenkategoria</ion-label>
             <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.subcategory">
                 <ion-option value="">Te gjitha</ion-option>
@@ -46,7 +44,7 @@
                 <ion-option value="Arsimi i larte">Arsimi i larte</ion-option>
                 <ion-option value="Mireqenia Sociale">Mireqenia Sociale</ion-option>
             </ion-select>
-        </ion-item>
+        </ion-item> -->
         <button ion-button block class="filter-button" (click)="toggleFilters('close')">Filtro Rezultatet</button>
         
     </div>

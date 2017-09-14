@@ -19,34 +19,60 @@
             <h2 style="text-align: center;">{{card.code}}</h2>
         </div>
         <div class="info-row">
-            <h4>Kush perfiton nga ky sherbim?</h4>
+            <h4>Emri i shërbimit</h4>
+            <div>{{card.title}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Cili është qëllimi i shërbimit?</h4>
+            <div>{{card.description}}</div>
+        </div>
+        <div class="info-row">
+            <h4>Çfarë ofron ky shërbim?</h4>
+            <div class="card-content" [innerHTML]="card.content"></div>
+        </div>
+        <div class="info-row">
+            <h4>A jam përfitues?</h4>
             <div>{{card.profitable}}</div>
         </div>
         <div class="docs info-row">
-            <h4>Dokumentat e nevojshme</h4>
+            <h4>Çfarë dokumentesh duhen për aplikim?</h4>
             <ion-grid class="table">
                 <ion-row class="table-header">
-                    <ion-col col-3>Lloji</ion-col>
-                    <ion-col col-4>Nga leshohet</ion-col>
-                    <ion-col col-5>Dokumenti</ion-col>
+                    <ion-col col-6>Dokumenti</ion-col>
+                    <ion-col col-6>Nga leshohet</ion-col>
                 </ion-row>
-
-                <ion-row *ngFor="let doc of card.documents">
-                    <ion-col col-3>{{doc.docType}}</ion-col>
-                    <ion-col col-4>{{doc.institution}}</ion-col>
-                    <ion-col col-5>{{doc.description}}</ion-col>
-                </ion-row>
+                <div *ngFor="let cat of uniqueCategories">
+                    <ion-row class="table-header category">
+                        <ion-col>
+                            {{cat}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngFor="let doc of getFilteredDocs(cat)">
+                        <ion-col col-6>{{doc.description}}</ion-col>
+                        <ion-col col-6>{{doc.institution}}</ion-col>
+                    </ion-row>
+                </div>
             </ion-grid>
+            <!-- <ion-list>
+                <div *ngFor="let cat of uniqueCategories">
+                    <ion-list-header>
+                        {{ cat }}
+                    </ion-list-header>
+                    <ion-item *ngFor="let doc of getFilteredDocs(cat)">
+                        {{ doc.description }}
+                    </ion-item>
+                </div>
+            </ion-list> -->
         </div>
         <div class="info-row" *ngIf="location">
-            <h4>Ku mund te aplikoj?</h4>
+            <h4>Ku mund të aplikoj?</h4>
             <div><span><strong>Zyra: </strong></span>{{location.office}}</div>
             <div><span><strong>Qyteti: </strong></span>{{location.city}}</div>
             <div><span><strong>Adresa: </strong></span>{{location.address}}</div>
             <div><span><strong>Orari: </strong></span>{{location.time}}</div>
         </div>
         <div class="info-row">
-            <h4>A eshte online?</h4>
+            <h4>A është ky shërbim online?</h4>
             <div class="levels" *ngIf="card.isOnline">
                 <div *ngIf="card.isOnline.lvl1">Niveli 1 &#10004;</div>
                 <div *ngIf="card.isOnline.lvl2">Niveli 2 &#10004;</div>
@@ -58,21 +84,21 @@
             </div>
         </div>
         <div class="info-row" *ngIf="location">
-            <h4>Sa eshte tarifa per marrjen e sherbimit?</h4>
+            <h4>Sa është tarifa për marrjen e shërbimit?</h4>
             <div><span><strong>Tarifa Baze: </strong></span>{{card.fee.base}}</div>
             <div><span><strong>Tarifa Shtese: </strong></span>{{card.fee.extra}}</div>
             <div><span><strong>Metoda e pageses: </strong></span>{{card.fee.paymentMethod}}</div>
         </div>
         <div class="info-row">
-            <h4>Sa kohe nevojitet per te marre sherbimin?</h4>
+            <h4>Sa kohë nevojitet për të marrë shërbimin?</h4>
             <div>{{card.serviceDuration}}</div>
         </div>
         <div class="info-row">
-            <h4>Cfare perfitoj?</h4>
+            <h4>Çfarë përfitoj?</h4>
             <div>{{card.profits}}</div>
         </div>
         <div class="info-row">
-            <h4>C'afat vlefshmerie ka?</h4>
+            <h4>Ç'afat vlefshmërie ka?</h4>
             <div>{{card.serviceValidDuration}}</div>
         </div>
         <div class="info-row" *ngIf="card.location">
@@ -88,6 +114,10 @@
             <div><span><strong>Kontakto ne: </strong></span>{{card.contact.contactInfo}}</div>
             <div><span><strong>Oraret e hapura: </strong></span>{{card.contact.availableHours}}</div>
         </div>
+        <div class="info-row">
+            <h4>Nëse kam ankesë, si të veproj?</h4>
+            <div>{{card.complaints}}</div>
+        </div>
         <div class="info-row" *ngIf="card.legalInfo">
             <h4>Cila është baza ligjore e këtij shërbimi?</h4>
             <div>{{card.legalInfo}}</div>
@@ -96,9 +126,9 @@
 
     <hr>
     
-    <div class="card-content" [innerHTML]="card.content">
-    </div>
-    <hr>
+    <!-- <div class="card-content" [innerHTML]="card.content"> -->
+    <!-- </div> -->
+    <!-- <hr> -->
     <div class="actions">
         <ion-row>
             <ion-col>

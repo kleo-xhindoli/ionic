@@ -20,7 +20,7 @@ export class FeedbackModal {
 
     thankAndDismiss() {
         let toast = this.toastCtrl.create({
-            message: 'Faleminderit per feedback-un tuaj.',
+            message: 'Faleminderit per opinionin tuaj.',
             duration: 3000,
             position: 'bottom',
             cssClass: 'green-toast'

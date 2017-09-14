@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { InfoSingle } from '../info-single/info-single';
 import { InfoCardsProvider } from '../../providers/info-cards-provider';
 
@@ -22,20 +22,33 @@ export class Information {
     filteredCards: any[];
     filters: any;
     noFiltersState: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public infoProvider: InfoCardsProvider) {
+    loader: any;
+    uniqueInstitutions: any;
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public infoProvider: InfoCardsProvider,
+        public loadingCtrl: LoadingController
+    ) {
         this.showFilters = false;
         this.closingFilters = false;
         this.infoCards = [];
         this.noFiltersState = {
             search: '',
-            category: '',
-            subcategory: ''
+            responsibleInstitution: ''
         };
         this.filters = {
             search: '',
-            category: '',
-            subcategory: ''
+            responsibleInstitution: ''
         };
+        this.uniqueInstitutions = [];
+        if (!this.loader) {
+            this.loader = this.loadingCtrl.create({
+                content: 'Ju lutem prisni...',
+                dismissOnPageChange: true
+            });
+        }
+        this.loader.present().catch(() => {});
     }
 
     ionViewDidLoad() {
@@ -88,7 +101,13 @@ export class Information {
             this.infoProvider.getInfoCards()
             .then((data: any[]) => {
                 this.infoCards = data;
+                this.uniqueInstitutions = this.getUniqueInstitutions();
                 this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
+                if (this.loader) {
+                    this.loader.dismiss()
+                    .then(() => this.loader = undefined)
+                    .catch(() => this.loader = undefined);
+                }
             });
         }
         else {
@@ -96,6 +115,12 @@ export class Information {
             .then((bookmarks) => {
                 this.infoCards = bookmarks;
                 this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
+                this.uniqueInstitutions = this.getUniqueInstitutions();
+                if (this.loader) {
+                    this.loader.dismiss()
+                    .then(() => this.loader = undefined)
+                    .catch(() => this.loader = undefined);
+                }
             });
         }
         this.infoProvider.setBookmarkIds();
@@ -111,17 +136,17 @@ export class Information {
 
         })
         .filter((card) => {
-            if(this.filters.category.length === 0) return true;
+            if(this.filters.responsibleInstitution.length === 0) return true;
             else {
-                return this.filters.category === card.category;
+                return this.filters.responsibleInstitution === card.responsibleInstitution;
             }
         })
-        .filter((card) => {
-            if(this.filters.subcategory.length === 0) return true;
-            else {
-                return this.filters.subcategory === card.subcategory;
-            }
-        });
+        // .filter((card) => {
+        //     if(this.filters.subcategory.length === 0) return true;
+        //     else {
+        //         return this.filters.subcategory === card.subcategory;
+        //     }
+        // });
     }
 
     hasFilters(){
@@ -131,6 +156,16 @@ export class Information {
     clearFilters() {
         this.filters = JSON.parse(JSON.stringify(this.noFiltersState));
         this.applyFilters();
+    }
+
+    getUniqueInstitutions() {
+        let allInstitutions = this.infoCards.map((card) => card.responsibleInstitution);
+        let unique = [];
+        allInstitutions.forEach((i) => {
+            if (unique.indexOf(i) === -1)
+                unique.push(i);
+        });
+        return unique;
     }
 
 }

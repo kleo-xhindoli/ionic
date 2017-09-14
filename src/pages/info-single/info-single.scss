@@ -11,12 +11,12 @@ page-info-single {
 
         .table {
             font-size: 0.8em;
-            border: 1px solid black;
+            border: 1px solid lightgrey;
             border-radius: 3px;
             text-align: center;
             margin: 10px 0;
             ion-row {
-                border-top: 1px solid black;
+                border-top: 1px solid lightgrey;
             }
 
             ion-row:nth-child(1) {
@@ -24,7 +24,7 @@ page-info-single {
             }
 
             ion-col {
-                border-right: 1px solid black;
+                border-right: 1px solid lightgrey;
             }
 
             ion-col:last-child {
@@ -34,7 +34,11 @@ page-info-single {
             .table-header {
                 font-weight: bold;
                 
+                &.category {
+                    border-top: 1px solid lightgrey!important;
+                }
             }
+
         }
 
     }
