@@ -48,7 +48,7 @@ export class Information {
                 dismissOnPageChange: true
             });
         }
-        this.loader.present().catch(() => {});
+        this.loader.present().catch(() => { });
     }
 
     ionViewDidLoad() {
@@ -59,22 +59,22 @@ export class Information {
         this.updateView();
     }
 
-    getItems(ev){
-        console.log(ev);
+    getItems(ev) {
+        // console.log(ev);
         this.applyFilters();
     }
 
-    showSingleFor(card){
+    showSingleFor(card) {
         this.navCtrl.push(InfoSingle, card);
     }
 
-    isBookmark(id){
-        if (this.infoProvider.bookmarkIds.indexOf(id.toString()) == -1) 
+    isBookmark(id) {
+        if (this.infoProvider.bookmarkIds.indexOf(id.toString()) == -1)
             return false;
         return true;
     }
 
-    toggleFilters(state){
+    toggleFilters(state) {
         if (!state)
             this.showFilters = !this.showFilters;
         else if (state === 'open') {
@@ -85,48 +85,49 @@ export class Information {
             setTimeout(() => {
                 this.showFilters = false;
                 this.closingFilters = false;
+                this.loadMore(null, 0);
             }, 300);
         }
     }
 
-    toggleBookmark(ev, id){
+    toggleBookmark(ev, id) {
         ev.stopPropagation();
         this.infoProvider.bookmark(id).then(() => {
             this.updateView();
         })
     }
 
-    updateView(){
-        if(this.navParams.data.isBookmarks === false){
+    updateView() {
+        if (this.navParams.data.isBookmarks === false) {
             this.infoProvider.getInfoCards()
-            .then((data: any[]) => {
-                this.infoCards = data;
-                this.uniqueInstitutions = this.getUniqueInstitutions();
-                this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
-                if (this.loader) {
-                    this.loader.dismiss()
-                    .then(() => this.loader = undefined)
-                    .catch(() => this.loader = undefined);
-                }
-            });
+                .then((data: any[]) => {
+                    this.infoCards = data;
+                    this.getUniqueInstitutions();
+                    this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
+                    if (this.loader) {
+                        this.loader.dismiss()
+                            .then(() => this.loader = undefined)
+                            .catch(() => this.loader = undefined);
+                    }
+                });
         }
         else {
             this.infoProvider.getBookmarks()
-            .then((bookmarks) => {
-                this.infoCards = bookmarks;
-                this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
-                this.uniqueInstitutions = this.getUniqueInstitutions();
-                if (this.loader) {
-                    this.loader.dismiss()
-                    .then(() => this.loader = undefined)
-                    .catch(() => this.loader = undefined);
-                }
-            });
+                .then((bookmarks) => {
+                    this.infoCards = bookmarks;
+                    this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
+                    this.getUniqueInstitutions();
+                    if (this.loader) {
+                        this.loader.dismiss()
+                            .then(() => this.loader = undefined)
+                            .catch(() => this.loader = undefined);
+                    }
+                });
         }
         this.infoProvider.setBookmarkIds();
     }
 
-    applyFilters(){
+    applyFilters() {
         this.filteredCards = JSON.parse(JSON.stringify(this.infoCards));
         this.filteredCards = this.filteredCards.filter((card) => {
             let regex = new RegExp(this.filters.search, 'i');
@@ -135,12 +136,12 @@ export class Information {
                 (card.content.search(regex) !== -1);
 
         })
-        .filter((card) => {
-            if(this.filters.responsibleInstitution.length === 0) return true;
-            else {
-                return this.filters.responsibleInstitution === card.responsibleInstitution;
-            }
-        })
+            .filter((card) => {
+                if (this.filters.responsibleInstitution.length === 0) return true;
+                else {
+                    return this.filters.responsibleInstitution === card.responsibleInstitution;
+                }
+            })
         // .filter((card) => {
         //     if(this.filters.subcategory.length === 0) return true;
         //     else {
@@ -149,23 +150,38 @@ export class Information {
         // });
     }
 
-    hasFilters(){
+    hasFilters() {
         return !(JSON.stringify(this.filters) === JSON.stringify(this.noFiltersState));
     }
 
     clearFilters() {
         this.filters = JSON.parse(JSON.stringify(this.noFiltersState));
+        this.updateView();
         this.applyFilters();
     }
 
     getUniqueInstitutions() {
-        let allInstitutions = this.infoCards.map((card) => card.responsibleInstitution);
-        let unique = [];
-        allInstitutions.forEach((i) => {
-            if (unique.indexOf(i) === -1)
-                unique.push(i);
-        });
-        return unique;
+        return this.infoProvider.getUniqueInstitutions().then((inst) => {
+            this.uniqueInstitutions = inst;
+        })
+    }
+
+    loadMore(infiniteScroll, limit) {
+        console.log('get more data');
+        return this.infoProvider.getMoreCards(limit).then((cards: any) => {
+            this.infoCards = cards;
+            this.applyFilters();
+            if (infiniteScroll)
+                infiniteScroll.complete();
+        })
+    }
+
+    loadMoreBookmarks(infiniteScroll) {
+        this.infoProvider.getMoreBookmarks(0).then((cards: any) => {
+            this.infoCards = cards;
+            this.applyFilters();
+            infiniteScroll.complete();
+        })
     }
 
 }

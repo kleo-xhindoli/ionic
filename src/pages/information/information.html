@@ -56,23 +56,34 @@
         </button>
     </div>
 
-    <ion-card class="info-card" *ngFor="let card of filteredCards" (click)="showSingleFor(card)">
-        <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card._id)" 
-        [color]="isBookmark(card._id)? 'primary' : 'light'">
-            <ion-icon name="bookmark"></ion-icon>
-        </button>
-        <ion-card-content>
-            <ion-card-title>
-                {{card.title}}
-            </ion-card-title>
-            <p>
-                {{card.description}}
-            </p>
-            <hr>
-            <ion-note class="category">
-                {{card.category}} > {{card.subcategory}}
-            </ion-note>
-        </ion-card-content>
-    </ion-card>
+    <ion-list>
+        <ion-card class="info-card" *ngFor="let card of filteredCards" (click)="showSingleFor(card)">
+            <button ion-button icon-only clear class="bookmark-button" (click)="toggleBookmark($event, card._id)" 
+            [color]="isBookmark(card._id)? 'primary' : 'light'">
+                <ion-icon name="bookmark"></ion-icon>
+            </button>
+            <ion-card-content>
+                <ion-card-title>
+                    {{card.title}}
+                </ion-card-title>
+                <p>
+                    {{card.description}}
+                </p>
+                <hr>
+                <ion-note class="category">
+                    <!-- {{card.category}} > {{card.subcategory}} -->
+                    {{ card.responsibleInstitution }}
+                </ion-note>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event, null)" *ngIf="!navParams.data.isBookmarks">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-infinite-scroll (ionInfinite)="loadMoreBookmarks($event)" *ngIf="navParams.data.isBookmarks">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
     
 </ion-content>

@@ -19,47 +19,34 @@ export class InfoCardsProvider {
     bookmarks: any[];
     bookmarkIds: string[];
     url: string;
+    batchSize: number;
+    currentIndex: number;
+    canGet: boolean;
     constructor(public http: Http, public storage: Storage, public api: API) {
         this.bookmarks = [];
         this.bookmarkIds = [];
         this.url = '/infocards';
+        this.batchSize = 20;
+        this.currentIndex = 0;
+        this.canGet = true;
+        this.infoCards = [];
     }
 
     getInfoCards(){
-        // return new Promise((resolve, reject) => {
-        //     this.infoCards = this.getDummyCards();
-        //     resolve(this.infoCards);
+        // return this.api.get(this.url).then((cards: any) => {
+        //     this.infoCards = cards;
+        //     return cards;
         // })
-        if(this.infoCards){
-            return Promise.resolve(this.infoCards);
-        }
-        else {            
-            // return new Promise(resolve => {
-            //     this.http.get(this.url)
-            //     .map(res => res.json())
-            //     .catch((err) =>{
-            //         return Observable.throw(err || 'Server error');
-            //     })
-            //     .subscribe(data => {
-            //         this.infoCards = data;
-            //         resolve(this.infoCards);
-            //     },
-            //     err => {
-            //         this.infoCards = this.getDummyCards();
-            //         console.log(err);
-            //         resolve(this.infoCards);
-            //     })
-            // });
-            return this.api.get(this.url).then((cards: any) => {
-                this.infoCards = cards;
-                return cards;
-            })
-            .catch((err) => {
-                console.log(err);
-                this.infoCards = this.getDummyCards();
-                return this.infoCards;
-            })
-        }
+        // .catch((err) => {
+        //     console.log(err);
+        //     this.infoCards = this.getDummyCards();
+        //     return this.infoCards;
+        // })
+        if (!this.canGet) return;
+        this.currentIndex = 0;
+        this.infoCards = [];
+        console.log('getting info cards');
+        return this.getMoreCards();
     }
 
     bookmark(id) {
@@ -112,6 +99,38 @@ export class InfoCardsProvider {
         return [
             
         ]
+    }
+
+    getUniqueInstitutions() {
+        return this.api.get(`${this.url}/institutions`).then((institutions: any) => {
+            return institutions;
+        })
+    }
+
+    getMoreCards(limit) {
+        if (!this.canGet) return;
+        this.canGet = false;
+        if (limit === null || typeof limit === 'undefined')
+            limit = this.batchSize;
+        console.log(this.currentIndex);
+        console.log(limit);
+        return this.api.get(`${this.url}/${this.currentIndex}/${limit}`)
+        .then((cards: any) => {
+            this.infoCards = this.infoCards.concat(cards);
+            this.currentIndex += this.batchSize;
+            this.canGet = true;
+            return this.infoCards;
+        })
+        .catch((err) => {
+            console.log(err);
+            this.canGet = true;
+        })
+    }
+
+    getMoreBookmarks(limit) {
+        return this.getMoreCards(limit).then(() => {
+            return this.getBookmarks();
+        })
     }
 
 }
