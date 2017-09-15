@@ -46,7 +46,7 @@ export class InfoCardsProvider {
         this.currentIndex = 0;
         this.infoCards = [];
         console.log('getting info cards');
-        return this.getMoreCards();
+        return this.getMoreCards(null);
     }
 
     bookmark(id) {
