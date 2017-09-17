@@ -27,7 +27,7 @@ export class MyApp {
     this.pages = [
       { title: 'Faqja Kryesore', component: HomePage },
       { title: 'Rezervimi i Biletes', component: Tickets },
-      { title: 'Kartelat e Informacionit', component: Information },
+      { title: 'Kartelat Informative', component: Information },
       // { title: 'Call Center', component: CallCenter },
       { title: 'Zeri i Qytetarit', component: PeoplesVoice },
       // { title: 'List', component: ListPage }

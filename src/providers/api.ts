@@ -83,5 +83,26 @@ export class API {
         });
     }
 
+    delete(route){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        if (this.ls.getToken()){
+            headers.append('x-access-token', this.ls.getToken());
+        }
+        let opt = new RequestOptions({headers: headers});
+        return new Promise((resolve, reject) => {
+            this.http.delete(this.apiUrl + route, opt)
+            .map(res => res.json())
+            .catch((err) =>{
+                return Observable.throw(err || 'Server error');
+            })
+            .subscribe(data => {
+                resolve(data);
+            },
+            err => {
+                reject(err);
+            })
+        });
+    }
+
 
 }

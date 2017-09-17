@@ -1,0 +1,35 @@
+<!--
+  Generated template for the RequestResetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Harruat Fjalëkalimin?</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="logo">
+        <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
+        <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
+    </div>
+    <p>Vendosni adresen e email-it me te cilin keni regjistruar llogarine tuaj. Se shpejti do te merrni nje email me detajet e ndryshimit te fjalekalimit.</p>
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <p class="error" *ngIf="error">Emaili i vendosur nuk eshte i sakte.</p>
+    
+    <div class="button-wrapper">
+        <div class="button" color="primary">
+            <button ion-button round (click)="requestReset()">KERKO NDRYSHIM TE FJALEKALIMIT</button>
+        </div>
+    </div>
+    <p class="register-link">Keni marre nje kod ndryshimi tashme? <a (click)="performResetPage(null)">Kliko ketu</a>.</p>
+</ion-content>

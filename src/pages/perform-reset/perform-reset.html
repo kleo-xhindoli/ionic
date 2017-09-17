@@ -1,5 +1,5 @@
 <!--
-  Generated template for the Login page.
+  Generated template for the PerformResetPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,12 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>Log in</ion-title>
-        <ion-buttons end (click)="dismiss()">
-            <button ion-button icon-only>
-                <ion-icon name="close"></ion-icon>
-            </button>
-        </ion-buttons>
+        <ion-title>Ndryshoni Fjalekalimin</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -23,24 +18,32 @@
         <img class="main-logo" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/rrethi-1.png" alt="Logo">
         <img class="title" src="http://www.adisa.gov.al/wp-content/uploads/2016/01/adisa.png" alt="Logo">
     </div>
-    <ion-item>
+    <p>Plotesoni fushat e meposhteme me kodin qe ju erdhi ne email, si dhe me fjalëkalimin e ri.</p>
+    <ion-item *ngIf="!navParams.data.email">
         <ion-label floating>Email</ion-label>
         <ion-input type="email" [(ngModel)]="username"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label floating>Password</ion-label>
+        <ion-label floating>Kodi 6-shifror</ion-label>
+        <ion-input type="text" [(ngModel)]="resetCode"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Fjalekalimi i ri</ion-label>
         <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
-    <p class="forgot-password"><a (click)="forgotPassword()">Keni harruar fjalëkalimin?</a></p>
+    <ion-item>
+        <ion-label floating>Konfirmoni fjalekalimin e ri</ion-label>
+        <ion-input type="password" [(ngModel)]="confirm"></ion-input>
+    </ion-item>
 
-    <p class="error" *ngIf="error">Kredencialet tuaja nuk jane te sakta.</p>
-    
+    <p class="error" *ngIf="error">{{ errorMsg }}</p>
+
     <div class="button-wrapper">
         <div class="button" color="primary">
-            <button ion-button round (click)="login()">LIDHUNI</button>
+            <button ion-button round (click)="attemptReset()">NRYSHO FJALEKALIMIN</button>
         </div>
     </div>
-    <p class="register-link">Nuk keni llogari? <a (click)="registerPage()">Regjistrohuni ketu</a>.</p>
 </ion-content>

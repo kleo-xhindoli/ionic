@@ -21,6 +21,8 @@ import { CallCenter } from '../pages/call-center/call-center';
 import { Chat } from '../pages/chat/chat';
 import { PeoplesVoice } from '../pages/peoples-voice/peoples-voice';
 import { GeneralFeedback } from '../pages/general-feedback/general-feedback';
+import { RequestResetPage } from '../pages/request-reset/request-reset';
+import { PerformResetPage } from '../pages/perform-reset/perform-reset';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -54,7 +56,9 @@ import { FeedbackProvider } from '../providers/feedback-provider';
     CallCenter,
     Chat,
     PeoplesVoice,
-    GeneralFeedback
+    GeneralFeedback,
+    RequestResetPage,
+    PerformResetPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ import { FeedbackProvider } from '../providers/feedback-provider';
     CallCenter,
     Chat,
     PeoplesVoice,
-    GeneralFeedback
+    GeneralFeedback,
+    RequestResetPage,
+    PerformResetPage
   ],
   providers: [
     StatusBar,

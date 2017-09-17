@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController, ViewController, LoadingContr
 
 import { Register } from '../register/register';
 import { HomePage } from '../home/home';
+import { RequestResetPage } from '../request-reset/request-reset';
 import { AuthProvider } from '../../providers/auth-provider';
 import { LocalStorage } from '../../providers/local-storage';
 
@@ -38,6 +39,10 @@ export class Login {
     registerPage() {
         let contactModal = this.modalCtrl.create(Register);
             contactModal.present();
+    }
+
+    forgotPassword() {
+        this.navCtrl.push(RequestResetPage);
     }
 
     login() {

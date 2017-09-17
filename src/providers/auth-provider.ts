@@ -16,25 +16,12 @@ import { API } from './api'
 export class AuthProvider {
     loginUrl = '/users/login'
     registerUrl = '/users/register'
+    requestResetUrl = '/users/requestReset'
+    performResetUrl = '/users/resetPassword'
     constructor(public http: Http, public ls: LocalStorage, public api: API) {
     }
 
     logIn(username, password) {
-        // return new Promise((resolve, reject) => {
-        //     this.http.post(this.loginUrl, {username: username, password: password})
-        //     .map(res => res.json())
-        //     .catch((err) =>{
-        //         return Observable.throw(err || 'Server error');
-        //     })
-        //     .subscribe(data => {
-        //         this.ls.setToken(data.token);
-        //         resolve(data);
-        //     },
-        //     err => {
-        //         console.log(err);
-        //         reject(err);
-        //     })
-        // });
         return this.api.post(this.loginUrl, {username: username, password: password}).then((data: any) => {
             this.ls.setUser(data.username, data.token, data.fullname, data.id);
         })
@@ -50,22 +37,20 @@ export class AuthProvider {
             cardId: cardId
             // birthday: birthday
         };
-        // return new Promise((resolve, reject) => {
-        //     this.http.post(this.registerUrl, userObj)
-        //     .map(res => res.json())
-        //     .catch((err) =>{
-        //         return Observable.throw(err || 'Server error');
-        //     })
-        //     .subscribe(data => {
-        //         console.log(data);
-        //         resolve(data);
-        //     },
-        //     err => {
-        //         console.log(err);
-        //         reject(err);
-        //     })
-        // });
         return this.api.post(this.registerUrl, userObj);
     }
+
+    requestReset(user) {
+        return this.api.post(this.requestResetUrl, {username: user});
+    }
+
+    performReset(email, code, password) {
+        let data = {
+            username: email,
+            resetCode: code,
+            password: password
+        };
+        return this.api.post(this.performResetUrl, data);
+    }  
 
 }

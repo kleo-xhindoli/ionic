@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 // import { Http } from '@angular/http';
 // import { Headers, RequestOptions } from '@angular/http';
 // import {Observable} from 'rxjs/Rx';
@@ -15,8 +15,10 @@ import { LocalStorage } from './local-storage'
 export class TicketsProvider {
     data: any[];
     url = '/tickets';
+    ticketDeleted: any;
 
     constructor(public api: API, public ls: LocalStorage) {
+        this.ticketDeleted = new EventEmitter();
     }
 
     getTickets(){
@@ -106,11 +108,40 @@ export class TicketsProvider {
         // });
         if(ticket)
             return this.api.put(`${this.url}/${id}`, ticket);
+        else {
+            return new Promise((resolve, reject) => {
+                reject('Invalid ID');
+            })
+        } 
+    }
+
+    delete(id) {
+        let index = this.getIndexById(id);
+        if (index !== -1){
+            return this.api.delete(`${this.url}/${id}`)
+            .then((result) => {
+                this.data.splice(index, 1);
+                this.ticketDeleted.emit(result);
+                return result;
+            });
+
+        }
+        else {
+            return new Promise((resolve, reject) => {
+                reject('Invalid ID');
+            })
+        }
     }
 
     getById(id) {
         if(this.data) {
             return this.data.find((el) => { return el._id === id });
+        }
+    }
+
+    getIndexById(id) {
+        if(this.data) {
+            return this.data.findIndex((el) => { return el._id === id });
         }
     }
 

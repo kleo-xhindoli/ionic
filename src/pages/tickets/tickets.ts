@@ -41,6 +41,11 @@ export class Tickets {
     }
 
     ionViewDidEnter() {
+        this.renderView();
+        this.ticketsProvider.ticketDeleted.subscribe(() => this.renderView());
+    }
+
+    renderView() {
         if (!this.ls.isLogged()){
             let contactModal = this.modalCtrl.create(Login);
             contactModal.onDidDismiss(() => {
@@ -58,7 +63,6 @@ export class Tickets {
         }
         else {
             this.ticketsProvider.getTickets().then((tickets: any) => {
-                console.log('got tickets');
                 this.dates = [];
                 this.tickets = tickets;
 
@@ -68,7 +72,6 @@ export class Tickets {
                 console.log(err);
             })
         }
-        
     }
 
     createTicket(){
