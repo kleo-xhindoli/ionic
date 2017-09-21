@@ -14,19 +14,21 @@ export class DateTimeModal {
     minDate: string;
     date: string;
     time: string;
+    minTime: string;
     constructor(public viewCtrl: ViewController,
         public navParams: NavParams,
         public navCtrl: NavController,
         public api: API
     ) {
+        let d = new Date();
+        this.minDate = d.toISOString().split('T')[0];
+        this.minTime = `${d.getHours()}:${d.getMinutes()}`;
+        this.date = this.minDate;
+
         this.intervals = this.getIntervals();
         this.nbServices = parseInt(this.navParams.get('nbServices'))
         this.hasChosen = false;
-        this.minDate = new Date().toISOString().split('T')[0];
-        this.date = this.minDate;
         this.recalculate(this.date);
-
-
 
     }
 
@@ -88,8 +90,21 @@ export class DateTimeModal {
         return index;
     }
 
+    _getClosestTimeTimes20(time) {
+        let hour = parseInt(time.split(':')[0]);
+        let mins = parseInt(time.split(':')[1]);
+        if (mins < 20) return `${hour}:20`;
+        else if (mins < 40) return `${hour}:40`;
+        else {
+            hour++;
+            if (hour >= 24) 
+                hour = 0
+            return `${hour}:00`;
+        }
+    }
+
     getIntervals(){
-        return [
+        let staticIntervals = [
             {
                 text: '08:00',
                 active: false,
@@ -211,6 +226,20 @@ export class DateTimeModal {
                 canChoose: false
             }
         ];
+        if (this.date === this.minDate) {
+            let maxDisabledIndex = this.getIndexFromStamp(this._getClosestTimeTimes20(this.minTime));
+            if (maxDisabledIndex <= staticIntervals.length){
+                for(let i = 0; i < maxDisabledIndex; i++){
+                    staticIntervals[i].active = true;
+                }
+            }
+            else {
+                staticIntervals.forEach((interval) => {
+                    interval.active = true;
+                })
+            }
+        }
+        return staticIntervals;
     }
 
 
