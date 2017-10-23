@@ -29,7 +29,7 @@
         <ion-item>
             <ion-label class="input-label">Institucioni</ion-label>
             <ion-select (ionChange)="getItems($event)" [(ngModel)]="filters.responsibleInstitution">
-                <ion-option value="">Te gjitha</ion-option>
+                <ion-option value="">Të gjitha</ion-option>
                 <ion-option *ngFor="let institution of uniqueInstitutions" [value]="institution">{{institution}}</ion-option>
                 
             </ion-select>

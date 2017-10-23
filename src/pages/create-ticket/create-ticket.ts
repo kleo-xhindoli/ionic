@@ -68,7 +68,7 @@ export class CreateTicket {
         ev.stopPropagation();
         ev.preventDefault();
         if (!this.location || !this.service || !this.nbServices) {
-            this.errorMessage = "Ju duhet te plotesoni fushat me siper para se te zgjidhni kohen e rezervimit.";
+            this.errorMessage = "Ju duhet të plotësoni fushat më sipër para se të zgjidhni kohën e rezervimit.";
             this.error = true;
             setTimeout(() => {
                 this.errorMessage = "";
@@ -97,7 +97,7 @@ export class CreateTicket {
 
     plural(srv){
         if (!srv || srv.length === 0)
-            return 'Sherbimeve';
+            return 'Shërbimeve';
         else
             return srv.split(' ')[0] + 've';
     }
