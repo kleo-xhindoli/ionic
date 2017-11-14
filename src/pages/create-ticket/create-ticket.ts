@@ -59,8 +59,14 @@ export class CreateTicket {
             this.navCtrl.pop();
         })
         .catch((err) => {
-            this.navCtrl.pop();
+            // this.navCtrl.pop();
+            this.errorMessage = err._body;
+            this.error = true;
             console.log(err);
+            setTimeout(() => {
+                this.errorMessage = "";
+                this.error = false;
+            }, 4000);
         })
     }
 

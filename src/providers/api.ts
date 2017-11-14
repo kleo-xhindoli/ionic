@@ -13,7 +13,7 @@ import { LocalStorage } from './local-storage'
 @Injectable()
 export class API {
 
-    // apiUrl = 'http://localhost:3000';
+    // apiUrl = 'http://localhost/api';
     apiUrl = 'http://134.0.36.172/api';
     constructor(public http: Http, public ls: LocalStorage) {
     }
