@@ -9,7 +9,6 @@ import { AuthProvider } from '../../providers/auth-provider';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-perform-reset',
     templateUrl: 'perform-reset.html',

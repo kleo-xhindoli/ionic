@@ -1,5 +1,8 @@
 {
   "name": "ADISA Mobile",
   "app_id": "c0b65dd3",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

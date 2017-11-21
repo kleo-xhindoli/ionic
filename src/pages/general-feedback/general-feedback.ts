@@ -8,7 +8,6 @@ import { FeedbackProvider } from '../../providers/feedback-provider';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-general-feedback',
   templateUrl: 'general-feedback.html',

@@ -9,7 +9,6 @@ import { PerformResetPage } from '../perform-reset/perform-reset'
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-request-reset',
     templateUrl: 'request-reset.html',

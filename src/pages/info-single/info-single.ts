@@ -7,7 +7,6 @@ import { FeedbackModal } from './feedback-modal/feedback-modal';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-info-single',
     templateUrl: 'info-single.html',

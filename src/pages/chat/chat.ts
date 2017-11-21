@@ -11,7 +11,6 @@ import { ChatProvider } from '../../providers/chat-provider';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-chat',
     templateUrl: 'chat.html',

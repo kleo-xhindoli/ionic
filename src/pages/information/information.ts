@@ -9,7 +9,6 @@ import { InfoCardsProvider } from '../../providers/info-cards-provider';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-information',
     templateUrl: 'information.html',
@@ -45,7 +44,7 @@ export class Information {
         if (!this.loader) {
             this.loader = this.loadingCtrl.create({
                 content: 'Ju lutem prisni...',
-                dismissOnPageChange: true
+                // dismissOnPageChange: true
             });
         }
         this.loader.present().catch(() => { });

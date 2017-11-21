@@ -8,7 +8,6 @@ import { Information } from '../information/information';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
     selector: 'page-info-tabs',
     templateUrl: 'info-tabs.html',
