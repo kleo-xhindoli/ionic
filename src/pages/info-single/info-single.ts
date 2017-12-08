@@ -26,7 +26,7 @@ export class InfoSingle {
     }
 
     showFeedbackModal() {
-        this.navCtrl.push(FeedbackModal);
+        this.navCtrl.push(FeedbackModal, {cardId: this.card._id});
     }
 
     getUniqueDocCategories(docs) {
