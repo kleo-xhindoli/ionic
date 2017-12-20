@@ -38,7 +38,7 @@ export class CreateTicket {
     createTicket(){
         let hours = parseInt(this.time.split(':')[0]);
         let mins = parseInt(this.time.split(':')[1]);
-        mins += 20 * this.nbServices;
+        mins += 10 * this.nbServices;
         while(mins - 60 >= 0){
             hours++;
             mins -= 60;

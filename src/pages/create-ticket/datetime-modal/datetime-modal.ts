@@ -15,6 +15,7 @@ export class DateTimeModal {
     date: string;
     time: string;
     minTime: string;
+    timeBetweenIntervals: number;
     constructor(public viewCtrl: ViewController,
         public navParams: NavParams,
         public navCtrl: NavController,
@@ -24,6 +25,7 @@ export class DateTimeModal {
         this.minDate = d.toISOString().split('T')[0];
         this.minTime = `${d.getHours()}:${d.getMinutes()}`;
         this.date = this.minDate;
+        this.timeBetweenIntervals = 10;
 
         this.intervals = this.getIntervals();
         this.nbServices = parseInt(this.navParams.get('nbServices'))
@@ -84,17 +86,17 @@ export class DateTimeModal {
         if (!stamp || stamp.length === 0 || !stamp.includes(':')) return -1;
         let index = 0;
         let h = parseInt(stamp.split(':')[0]);
-        index = (h - 8) * 3;
+        index = (h - 8) * 60/this.timeBetweenIntervals;
         let m = parseInt(stamp.split(':')[1]);
-        index += m / 20;
+        index += m / this.timeBetweenIntervals;
         return index;
     }
 
-    _getClosestTimeTimes20(time) {
+    _getClosestRoundTime(time) {
         let hour = parseInt(time.split(':')[0]);
         let mins = parseInt(time.split(':')[1]);
-        if (mins < 20) return `${hour}:20`;
-        else if (mins < 40) return `${hour}:40`;
+        if (mins < this.timeBetweenIntervals) return `${hour}:${this.timeBetweenIntervals}`;
+        else if (mins < 60) return `${hour}:${Math.ceil(mins/this.timeBetweenIntervals)*this.timeBetweenIntervals}`;
         else {
             hour++;
             if (hour >= 24) 
@@ -103,131 +105,32 @@ export class DateTimeModal {
         }
     }
 
+     _padInt(int) {
+        if (int < 9) return `0${int}`;
+        return int;
+    }
+
     getIntervals(){
-        let staticIntervals = [
-            {
-                text: '08:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '08:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '08:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '09:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '09:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '09:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '10:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '10:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '10:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '11:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '11:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '11:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '12:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '12:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '12:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '13:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '13:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '13:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '14:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '14:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '14:40',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '15:00',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '15:20',
-                active: false,
-                canChoose: false
-            },
-            {
-                text: '15:40',
+        let staticIntervals = [];
+        let startHour = 8;
+        let endHour = 16;
+        let intervalH = startHour;
+        let intervalM = 0;
+        while(intervalH < endHour) {
+            let interval = {
+                text: `${this._padInt(intervalH)}:${this._padInt(intervalM)}`,
                 active: false,
                 canChoose: false
             }
-        ];
+            staticIntervals.push(interval);
+            intervalM += this.timeBetweenIntervals;
+            if (intervalM >= 60) {
+                intervalH++;
+                intervalM -= 60;
+            }
+        }
         if (this.date === this.minDate) {
-            let maxDisabledIndex = this.getIndexFromStamp(this._getClosestTimeTimes20(this.minTime));
+            let maxDisabledIndex = this.getIndexFromStamp(this._getClosestRoundTime(this.minTime));
             if (maxDisabledIndex <= staticIntervals.length){
                 for(let i = 0; i < maxDisabledIndex; i++){
                     staticIntervals[i].active = true;
