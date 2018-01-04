@@ -27,14 +27,14 @@ export class AuthProvider {
         })
     }
 
-    register(user, pass, firstname, lastname, tel, cardId){
+    register(user, pass, firstname, tel, cardId){
         let userObj = {
             username: user, 
             password: pass, 
             firstname: firstname, 
-            lastname: lastname, 
             tel: tel, 
             cardId: cardId
+            // lastname: lastname, 
             // birthday: birthday
         };
         return this.api.post(this.registerUrl, userObj);

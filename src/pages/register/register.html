@@ -30,18 +30,18 @@
 
     <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="username"></ion-input>
+        <ion-input type="email" required [(ngModel)]="username"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label floating>Emri</ion-label>
-        <ion-input type="text" [(ngModel)]="firstname"></ion-input>
+        <ion-label floating>Emri i individit / Emri i biznesit</ion-label>
+        <ion-input type="text" required [(ngModel)]="firstname"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
         <ion-label floating>Mbiemri</ion-label>
         <ion-input type="text" [(ngModel)]="lastname"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <!-- <ion-item>
         <ion-label floating>Datelindja</ion-label>
@@ -49,23 +49,23 @@
     </ion-item> -->
     
     <ion-item>
-        <ion-label floating>ID e kartës</ion-label>
-        <ion-input type="text" [(ngModel)]="cardId"></ion-input>
+        <ion-label floating>NID / NIPT</ion-label>
+        <ion-input type="text" required [(ngModel)]="cardId"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Nr. Telefoni</ion-label>
-        <ion-input type="text" [(ngModel)]="tel"></ion-input>
+        <ion-input type="text" required [(ngModel)]="tel"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
+        <ion-input type="password" required [(ngModel)]="password"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label floating>Konfirmo Password</ion-label>
-        <ion-input type="password" [(ngModel)]="confirm"></ion-input>
+        <ion-input type="password" required [(ngModel)]="confirm"></ion-input>
     </ion-item>
 
     <p class="error" *ngIf="error">{{errorStr}}</p>

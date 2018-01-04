@@ -39,8 +39,13 @@ export class Register {
     }
 
     register() {
+        this.error = false;
         if (this.password !== this.confirm){
             this.errorStr = 'Password-et nuk perputhen!'
+            this.error = true;
+        }
+        else if (!this.username || !this.password || !this.firstname || !this.tel || !this.cardId) {
+            this.errorStr = 'Ju lutem plotesoni te gjitha fushat.'
             this.error = true;
         }
         else {
@@ -48,9 +53,9 @@ export class Register {
                 this.username, 
                 this.password, 
                 this.firstname, 
-                this.lastname,
                 this.tel,
                 this.cardId
+                // this.lastname,
                 // this.birthday
             ).then(() => {
                 this.dismiss()
