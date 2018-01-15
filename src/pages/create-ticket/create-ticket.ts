@@ -36,6 +36,10 @@ export class CreateTicket {
     }
 
     createTicket(){
+        if (!this.date || !this.time || !this.location || !this.service || !this.nbServices) {
+            this.setError('Ju duhet të plotësoni të gjitha fushat më sipër para se të krijoni një rezervim!');
+            return;
+        }
         let hours = parseInt(this.time.split(':')[0]);
         let mins = parseInt(this.time.split(':')[1]);
         mins += 10 * this.nbServices;
@@ -59,13 +63,8 @@ export class CreateTicket {
         })
         .catch((err) => {
             // this.navCtrl.pop();
-            this.errorMessage = err._body;
-            this.error = true;
             console.log(err);
-            setTimeout(() => {
-                this.errorMessage = "";
-                this.error = false;
-            }, 4000);
+            this.setError(err._body);
         })
     }
 
@@ -73,16 +72,11 @@ export class CreateTicket {
         ev.stopPropagation();
         ev.preventDefault();
         if (!this.location || !this.service || !this.nbServices) {
-            this.errorMessage = "Ju duhet të plotësoni fushat më sipër para se të zgjidhni kohën e rezervimit.";
-            this.error = true;
-            setTimeout(() => {
-                this.errorMessage = "";
-                this.error = false;
-            }, 4000);
+            this.setError("Ju duhet të plotësoni fushat më sipër para se të zgjidhni kohën e rezervimit.");
         }
         else {
             // this.navCtrl.push(DateTimeModal, {nbServices: this.nbServices});
-            let dateTimeModal = this.modalCtrl.create(DateTimeModal, {nbServices: this.nbServices});
+            let dateTimeModal = this.modalCtrl.create(DateTimeModal, {nbServices: this.nbServices, location: this.location});
             dateTimeModal.onDidDismiss((data) => {
                 this.date = data.date;
                 this.time = data.time;
@@ -90,6 +84,21 @@ export class CreateTicket {
             });
             dateTimeModal.present();
         }
+    }
+
+    setError(msg) {
+        this.errorMessage = msg;
+        this.error = true;
+        setTimeout(() => {
+            this.errorMessage = "";
+            this.error = false;
+        }, 4000);
+    }
+
+    resetReservationTime() {
+        this.date = null;
+        this.time = null;
+        this.readableDate = null;
     }
 
     _pad(str, chars){

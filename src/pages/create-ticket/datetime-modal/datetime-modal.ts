@@ -9,7 +9,8 @@ import { API } from '../../../providers/api'
 export class DateTimeModal {
     intervals: any[];
     serverIntervals: any[];
-    nbServices: number;
+    nbServices: number; //from nav-params
+    location: string; //from nav-params
     hasChosen: boolean;
     minDate: string;
     date: string;
@@ -28,7 +29,9 @@ export class DateTimeModal {
         this.timeBetweenIntervals = 10;
 
         this.intervals = this.getIntervals();
-        this.nbServices = parseInt(this.navParams.get('nbServices'))
+        this.nbServices = parseInt(this.navParams.get('nbServices'));
+        this.location = this.navParams.get('location');
+        console.log(this.location);
         this.hasChosen = false;
         this.recalculate(this.date);
 
@@ -56,7 +59,7 @@ export class DateTimeModal {
 
     recalculate(date){
         this.intervals = this.getIntervals();
-        this.api.get(`/tickets/time-intervals/${date}`)
+        this.api.get(`/tickets/time-intervals/${date}/${this.location}`)
         .then((vals: any) => {
             this.serverIntervals = vals;
             vals.forEach((i) => {

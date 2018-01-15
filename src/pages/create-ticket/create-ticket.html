@@ -24,11 +24,11 @@
     </ion-item>-->
     <ion-item>
         <ion-label class="input-label"><ion-icon name="pin" class="label-icon"></ion-icon>Zyrat</ion-label>
-        <ion-select [(ngModel)]="location">
+        <ion-select [(ngModel)]="location" (ngModelChange)="resetReservationTime()">
             <!-- <ion-option value="Blv. Zhan d'Ark, Tirane">Blv. Zhan d'Ark, Tirane</ion-option> -->
             <ion-option value="Tiranë: Rr: “Jordan Misja” Tiranë">Tiranë: Rr: “Jordan Misja” Tiranë</ion-option>
-            <!-- <ion-option value="Kavajë: Pallati i Kulturës i Kavajës">Kavajë: Pallati i Kulturës i Kavajës</ion-option>
-            <ion-option value="Krujë: Lagjia numër 1">Krujë: Lagjia numër 1</ion-option> -->
+            <ion-option value="Kavajë: Pallati i Kulturës i Kavajës">Kavajë: Pallati i Kulturës i Kavajës</ion-option>
+            <ion-option value="Krujë: Lagjia numër 1">Krujë: Lagjia numër 1</ion-option>
         </ion-select>
     </ion-item>
     <ion-item>
@@ -41,7 +41,7 @@
     </ion-item>
     <ion-item>
         <ion-label class="input-label"><ion-icon name="options" class="label-icon"></ion-icon>Numri i {{ plural(service) }}</ion-label>
-        <ion-input [disabled]="!service" type="number" [(ngModel)]="nbServices"></ion-input>
+        <ion-input [disabled]="!service" type="number" [(ngModel)]="nbServices" (ngModelChange)="resetReservationTime()"></ion-input>
     </ion-item>
     <!--<ion-item>
         <ion-label class="input-label"><ion-icon ios="ios-calendar-outline" md="md-calendar" class="label-icon"></ion-icon>Koha e rezervimit</ion-label>
