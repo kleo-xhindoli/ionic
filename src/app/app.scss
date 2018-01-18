@@ -22,3 +22,10 @@
 .grey-bg {
     background-color: color($colors, light) !important;
 }
+
+.alert-radio-label{
+    white-space: pre-wrap !important;
+}
+.alert-checkbox-label{
+    white-space: pre-wrap;
+}
