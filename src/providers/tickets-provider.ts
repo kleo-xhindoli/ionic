@@ -146,36 +146,7 @@ export class TicketsProvider {
     }
 
     getDummyData(){
-        return [
-            {
-                _id: 0,
-                date: '2017-02-14',
-                time: '12:00',
-                location: 'Rr e Barrikadave, Tirane',
-                status: 'Aprovuar'
-            },
-            {
-                _id: 1,
-                date: '2017-02-14',
-                time: '14:30',
-                location: 'Rr e Barrikadave, Tirane',
-                status: 'Ne pritje per aprovim'
-            },
-            {
-                _id: 2,
-                date: '2017-03-08',
-                time: '14:00',
-                location: 'Rr e Barrikadave, Tirane',
-                status: 'Ne pritje per anullim'
-            },
-            {
-                _id: 3,
-                date: '2017-04-12',
-                time: '11:00',
-                location: 'Rr e Barrikadave, Tirane',
-                status: 'Anulluar'
-            }
-        ];
+        return [];
     }
 
 }
