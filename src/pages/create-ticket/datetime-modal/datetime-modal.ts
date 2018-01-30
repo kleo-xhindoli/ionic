@@ -60,14 +60,9 @@ export class DateTimeModal {
     }
 
     recalculate(date){
-        let day = new Date(date).getDay();
-        if (day == 6 || day == 0) {
-            this.date = this.minDate;
-        }
         this.intervals = this.getIntervals();
         this.api.get(`/tickets/time-intervals/${date}/${this.location}`)
         .then((vals: any) => {
-            console.log(vals);
             this.serverIntervals = vals;
             vals.forEach((i) => {
                 let index1 = this.getIndexFromStamp(i.start);
@@ -151,6 +146,12 @@ export class DateTimeModal {
                     interval.active = true;
                 })
             }
+        }
+        let day = new Date(this.date).getDay();
+        if (day == 6 || day == 0) {
+            staticIntervals.forEach((interval) => {
+                interval.active = true;
+            });
         }
         return staticIntervals;
     }
