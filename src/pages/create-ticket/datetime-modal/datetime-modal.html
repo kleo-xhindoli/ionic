@@ -28,7 +28,7 @@
             </div>
         </div>
     </ion-scroll>
-    <button ion-button block class="send-feedback-btn" (click)="dismiss()">
+    <button ion-button block class="send-feedback-btn" [disabled]="!date || !time" (click)="dismiss()">
         Konfirmo
     </button>
 

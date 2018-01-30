@@ -38,7 +38,9 @@ export class DateTimeModal {
     }
 
     dismiss() {
-        this.viewCtrl.dismiss({date: this.date, time: this.time});
+        if (this.date && this.time) {
+            this.viewCtrl.dismiss({date: this.date, time: this.time});
+        }
     }
 
     choose(interval, index) {
@@ -65,6 +67,7 @@ export class DateTimeModal {
         this.intervals = this.getIntervals();
         this.api.get(`/tickets/time-intervals/${date}/${this.location}`)
         .then((vals: any) => {
+            console.log(vals);
             this.serverIntervals = vals;
             vals.forEach((i) => {
                 let index1 = this.getIndexFromStamp(i.start);
@@ -120,7 +123,7 @@ export class DateTimeModal {
     getIntervals(){
         let staticIntervals = [];
         let startHour = 8;
-        let endHour = 16;
+        let endHour = 14;
         let intervalH = startHour;
         let intervalM = 0;
         while(intervalH < endHour) {
