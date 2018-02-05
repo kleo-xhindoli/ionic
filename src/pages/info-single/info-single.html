@@ -74,10 +74,10 @@
         <div class="info-row">
             <h4>A është ky shërbim online?</h4>
             <div class="levels" *ngIf="card.isOnline">
-                <div *ngIf="card.isOnline.lvl1">Niveli 1 &#10004;</div>
-                <div *ngIf="card.isOnline.lvl2">Niveli 2 &#10004;</div>
-                <div *ngIf="card.isOnline.lvl3">Niveli 3 &#10004;</div>
-                <div *ngIf="card.isOnline.lvl4">Niveli 4 &#10004;</div>
+                <div *ngIf="card.isOnline.lvl1">Niveli 1: Ofrohet vetëm informacion i përgjithshëm rreth shërbimit në portalin e-Albania &#10004;</div>
+                <div *ngIf="card.isOnline.lvl2">Niveli 2: Ofrohet informacion mbi shërbimin shoqëruar me formular aplikimi të shkarkueshëm në portalin e-Albania &#10004;</div>
+                <div *ngIf="card.isOnline.lvl3">Niveli 3: Ofrohet informacion mbi shërbimin shoqëruar me aplikim te dorëzuar nëpërmjet portalit e-Albania, duke kryer edhe pagesë kur është e nevojshme &#10004;</div>
+                <div *ngIf="card.isOnline.lvl4">Niveli 4: Ky shërbim mund të përfitohet tërësisht online nëpërmjet portalit e-Albania &#10004;</div>
             </div>
             <div class="levels" *ngIf="!card.isOnline || (!card.isOnline.lvl1 && !card.isOnline.lvl2 && !card.isOnline.lvl3 && !card.isOnline.lvl4)">
                 Ky sherbim nuk ofrohet online.
