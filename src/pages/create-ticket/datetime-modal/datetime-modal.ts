@@ -118,7 +118,7 @@ export class DateTimeModal {
     getIntervals(){
         let staticIntervals = [];
         let startHour = 8;
-        let endHour = 14;
+        let endHour = 15;
         let intervalH = startHour;
         let intervalM = 0;
         while(intervalH < endHour) {
